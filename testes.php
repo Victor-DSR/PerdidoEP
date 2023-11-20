@@ -1,5 +1,5 @@
 <?php
-$senha = "123456";
+$senha = "root";
 $hash = password_hash($senha,PASSWORD_DEFAULT);
 
 echo "$hash";

@@ -1,5 +1,6 @@
 <?php
 header('content-type: text/html; charset=utf-8');
+session_start();
 function conectar()
 {
     $host = "localhost";
@@ -15,7 +16,7 @@ function conectar()
         die();
     }
 } 
-if (isset($_GET['']) == NULL) {
+if (isset($_GET['']) == NULL and $_SESSION['idJog'] == NULL) {
     header("location:index.php");
 }
 if (isset($_POST['cadastrar'])) {
@@ -47,3 +48,16 @@ if(isset($_POST['login'])){
         }
     } 
 }
+function verificarHab ($a){
+    $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
+    $resultado = mysqli_query(conectar(), $sql);
+    $dados = mysqli_fetch_assoc($resultado);
+
+    if(isset($dados['id_jog'])){
+        header("location:SHJ2.php");
+    } else {
+        $sql2 = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','0'),('$a','1'),('$a','2')";
+        $resultado2 = mysqli_query(conectar(), $sql2);
+        header("location:TJN11.php");
+    }
+};

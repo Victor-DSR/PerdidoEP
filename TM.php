@@ -21,7 +21,7 @@ session_start();
       <img src="IMG/TGif.gif" alt="Gif de Teste">
     </div>
     <div class="botoes">
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TJ.php">Novo Jogo</a></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="SHJ1.php">Novo Jogo</a></button>
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TJP.php">Diario de Experiencia</a></button>
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TP.php">Diario Pessoal</a></button>
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TR.php">Lista de Aventureiros</a></button>

@@ -1,20 +1,5 @@
 <?php
 include_once('codigo.php');
-
-function habilidades($a){
-     $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
-     $resultado = mysqli_query(conectar(), $sql);
-     $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-     
-     $sql2 = "SELECT * FROM habilidades;";
-     $resultado2 = mysqli_query(conectar(), $sql2);
-     $dados2 = mysqli_fetch_all($resultado2, MYSQLI_ASSOC);
-     
-     var_dump($dados);
-     var_dump($dados2);
-}
-
-habilidades($_SESSION['idJog']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,6 +16,15 @@ habilidades($_SESSION['idJog']);
   </div>
 
   <div class="container">
+  <div class="formulario" style="font-size:x-large;">
+        <form action="TJN11.php" method="POST">
+            <div class="field">
+                Escolha até 3 habilidades:
+                <?php habilidadesJogadorNWP($_SESSION['idJog']); ?>
+            </div>
+                <input class="botao-imagem" type="submit" value="Selecionar Habilidades" onclick="validarFormulario(event)"></input>
+        </form>
+    </div>
   </div>
 
   <script>
@@ -38,6 +32,17 @@ habilidades($_SESSION['idJog']);
       var loadingElement = document.getElementById('loading');
       loadingElement.parentNode.removeChild(loadingElement);
     }, 4000);
+
+    function validarFormulario(event) {
+      var checkboxes = document.querySelectorAll('input[name="habilidade"]');
+      var habilidadesSelecionadas = Array.from(checkboxes).filter(function (checkbox) {
+      return checkbox.checked;
+    });
+      if (habilidadesSelecionadas.length > 3) {
+        event.preventDefault();
+        alert("Selecione no máximo 3 habilidades.");
+        }
+    }
   </script>
 
 </body>

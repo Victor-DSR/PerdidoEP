@@ -49,15 +49,55 @@ if(isset($_POST['login'])){
     } 
 }
 function verificarHab ($a){
-    $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
-    $resultado = mysqli_query(conectar(), $sql);
-    $dados = mysqli_fetch_assoc($resultado);
+         $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
+         $resultado = mysqli_query(conectar(), $sql);
+         $dados = mysqli_fetch_assoc($resultado);
 
     if(isset($dados['id_jog'])){
-        header("location:SHJ2.php");
+         header("location:SHJ2.php");
     } else {
-        $sql2 = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','0'),('$a','1'),('$a','2')";
-        $resultado2 = mysqli_query(conectar(), $sql2);
-        header("location:TJN11.php");
+         $sql2 = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','0'),('$a','1'),('$a','2')";
+         $resultado2 = mysqli_query(conectar(), $sql2);
+         header("location:TJN11.php");
     }
-};
+}
+
+function selecionarHabs()
+{
+     $sql = "SELECT * FROM habilidades";
+     $resultado = mysqli_query(conectar(), $sql);
+     return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+}
+
+function selecionarIdHab($a)
+{
+     $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
+     $resultado = mysqli_query(conectar(), $sql);
+     return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+}
+
+function habilidadesJogadorNWP($a){
+    $ids = selecionarIdHab($a);
+    $habs = selecionarHabs();
+    foreach ($ids as $id) {
+      foreach ($habs as $habilidade) {
+        if ($id['id_hab'] == $habilidade['id']){
+          echo "<label><input type='checkbox' name='habilidade[]' value='". $habilidade['nome']."'>".$habilidade['nome']."</label>";
+        }
+      }
+    }
+  }
+
+  function habilidadesJogadorNW($a){
+    $ids = selecionarIdHab($a);
+    $habs = selecionarHabs();
+    $i = 0;
+    foreach ($ids as $id) {
+      foreach ($habs as $habilidade) {
+        if ($id['id_hab'] == $habilidade['id']){
+          $i++;
+          $_SESSION["H$i"] = $habilidade['nome']."<br>";
+        }
+      }
+    }
+  }

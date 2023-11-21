@@ -12,10 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         habilidadesJogadorNW($_SESSION['idJog']);
     }
 }
+function selecionarHabsNome($a){
+     $sql = "SELECT * FROM habilidades WHERE nome = '$a'";
+     $resultado = mysqli_query(conectar(), $sql);
+     return $dados = mysqli_fetch_assoc($resultado);
+}
 
-/*echo $_SESSION['H1'] . "<br>";
-echo $_SESSION['H2'] . "<br>";
-echo $_SESSION['H3'] . "<br>";*/
+var_dump(selecionarHabsNome($_SESSION['H1']));
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -34,7 +34,7 @@ include_once('codigo.php');
     }, 4000);
 
     function validarFormulario(event) {
-      var checkboxes = document.querySelectorAll('input[name="habilidade"]');
+      var checkboxes = document.querySelectorAll('input[name="habilidade[]"]');
       var habilidadesSelecionadas = Array.from(checkboxes).filter(function (checkbox) {
       return checkbox.checked;
     });

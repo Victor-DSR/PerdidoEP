@@ -16,9 +16,11 @@ function conectar()
         die();
     }
 } 
+
 if (isset($_GET['']) == NULL and $_SESSION['idJog'] == NULL) {
     header("location:index.php");
 }
+
 if (isset($_POST['cadastrar'])) {
     $nome = $_POST['nom'];
     $email = $_POST['eml'];
@@ -29,6 +31,7 @@ if (isset($_POST['cadastrar'])) {
     $sql = "INSERT INTO jogador(nome, email, senha) VALUES ('$nome','$email','$hash')";
     return mysqli_query(conectar(), $sql);
 }
+
 if(isset($_POST['login'])){
     $email = $_POST['eml'];
     $senha = $_POST['snh'];
@@ -48,6 +51,7 @@ if(isset($_POST['login'])){
         }
     } 
 }
+
 function verificarHab ($a){
          $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
          $resultado = mysqli_query(conectar(), $sql);
@@ -82,7 +86,7 @@ function habilidadesJogadorNWP($a){
     foreach ($ids as $id) {
       foreach ($habs as $habilidade) {
         if ($id['id_hab'] == $habilidade['id']){
-          echo "<label><input type='checkbox' name='habilidade[]' value='". $habilidade['nome']."'>".$habilidade['nome']."</label>";
+          echo "<label><input type='checkbox' name='habilidade[]' value='". $habilidade['nome'] . "+" . $habilidade['id'] . "'>".$habilidade['nome']."</label>";
         }
       }
     }
@@ -96,8 +100,25 @@ function habilidadesJogadorNWP($a){
       foreach ($habs as $habilidade) {
         if ($id['id_hab'] == $habilidade['id']){
           $i++;
-          $_SESSION["H$i"] = $habilidade['nome']."<br>";
+          $_SESSION["H$i"] = $habilidade['nome'] . "+" . $habilidade['id'];
         }
       }
     }
   }
+
+  function selecionarHabilidade($a){
+    $sql = "SELECT * FROM habilidades WHERE id = '$a'";
+    $resultado = mysqli_query(conectar(), $sql);
+    return $dados = mysqli_fetch_assoc($resultado);
+}
+
+function criarPersonagem(){
+   $_SESSION['HP'] = 100;
+   $_SESSION['DEF'] = 10;
+}
+
+function criarQT(){
+  $_SESSION['HPQT'] = 200;
+  $_SESSION['ESPQT'] = 50;
+  $_SESSION['DEFQT'] = 10;
+};

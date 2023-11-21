@@ -12,13 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         habilidadesJogadorNW($_SESSION['idJog']);
     }
 }
-function selecionarHabsNome($a){
-     $sql = "SELECT * FROM habilidades WHERE nome = '$a'";
-     $resultado = mysqli_query(conectar(), $sql);
-     return $dados = mysqli_fetch_assoc($resultado);
-}
-
-var_dump(selecionarHabsNome($_SESSION['H1']));
+$H1 = explode('+',$_SESSION['H1']);
+$H2 = explode('+',$_SESSION['H2']);
+$H3 = explode('+',$_SESSION['H3']);
+criarQT();
+criarPersonagem()
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,9 +34,9 @@ var_dump(selecionarHabsNome($_SESSION['H1']));
 
   <div class="container">
   <div class="botoesE">
-      <button class="botao-imagem"><?php echo $_SESSION['H1'] ?></button>
-      <button class="botao-imagem"><?php echo $_SESSION['H2'] ?></button>
-      <button class="botao-imagem"><?php echo $_SESSION['H3'] ?></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo $H2[1]?>"><?php echo $H2[0] ?></a></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJn12.php?id=<?php echo $H3[1]?>"><?php echo $H3[0] ?></a></button>
     </div>
   </div>
   </div>
@@ -47,7 +45,7 @@ var_dump(selecionarHabsNome($_SESSION['H1']));
     setTimeout(function() {
       var loadingElement = document.getElementById('loading');
       loadingElement.parentNode.removeChild(loadingElement);
-    }, 4000);
+    }, 800);
   </script>
 
 </body>

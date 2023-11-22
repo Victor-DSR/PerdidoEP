@@ -1,25 +1,10 @@
 <?php
 include_once('codigo.php');
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["habilidade"])) {
-        $habilidades = $_POST["habilidade"];
-        $i = 0;
-        foreach ($habilidades as $habilidade) {
-            $i++;
-            $_SESSION["H$i"] = $habilidade."<br>";
-        }
-    } else {
-        habilidadesJogadorNW($_SESSION['idJog']);
-    }
-}
-$_SESSION['Bio'] = 'Pampa';
-$_SESSION['Inimigo'] = '1';
-$_SESSION['Padrao'] = 'p1';
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
-criarQT();
-criarPersonagem();
+$_SESSION['Bio'] = 'Caatinga';
+criarRPA();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,7 +14,7 @@ criarPersonagem();
     <link rel="stylesheet" type="text/css" href="auxiliar.css">
   <title>Perdido em Pindorama</title>
 </head>
-<body style="background-image: url(IMG/TJBP.gif);">
+<body style="background-image: url(IMG/TJBC.gif);">
 
   <div id="loading">
     <img src="IMG/Papel.gif" alt="Carregando...">
@@ -49,9 +34,9 @@ criarPersonagem();
       <img src="IMG/TGif.gif" alt="Gif de Teste">
      </div>
   <div class="botoesE">
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo $H2[1]?>"><?php echo $H2[0] ?></a></button>
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJn12.php?id=<?php echo $H3[1]?>"><?php echo $H3[0] ?></a></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN32.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN32.php?id=<?php echo $H2[1]?>"><?php echo $H2[0] ?></a></button>
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJn32.php?id=<?php echo $H3[1]?>"><?php echo $H3[0] ?></a></button>
     </div>
   </div>
   </div>

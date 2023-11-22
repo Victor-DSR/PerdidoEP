@@ -9,7 +9,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="auxiliar.css">
   <title>Perdido em Pindorama</title>
 </head>
-<body style="background-image: url(IMG/TJBA.gif);">
+<body style="background-image: url(IMG/FP.gif);">
 
   <div id="loading">
     <img src="IMG/Papel.gif" alt="Carregando...">

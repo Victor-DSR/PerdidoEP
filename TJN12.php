@@ -5,30 +5,39 @@ $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $HU = selecionarHabilidade($id);
-function contabilizarStatus($a, $b, $c, $d, $e, $f, $g, $h){
-     $HpPer = $a;
-     $HpMon = $b;
-     $tipoHab = $c;
-     $efeitoHab = $d;
-     $defPer = $e;
-     $defMon = $f;
-     $atqPer = $g;
-     $atqMon = $h;
-     $combo = 0;
-     if ($tipoHab == "ATQ"){
 
-     } elseif ($tipoHab == "DEF"){
-
-     } elseif ($tipoHab == "CURA"){
-
-     } elseif ($tipoHab == "BUF"){
-
-     } elseif ($tipoHab == "DBUF"){
-
-     } elseif ($tipoHab == "ESP"){
-
-     }
+if ($HU['tipo'] == "ATQ"){
+     danoPersonagem($_SESSION['HPQT'], $HU['efeito'], $_SESSION['HP'], $_SESSION['ATQQT'], $_SESSION['DEFQT'], $_SESSION['DEF']);
+} 
+elseif ($HU['tipo'] == "DEF"){
+     aumentarDefesa($_SESSION['DEF'], $HU['efeito'], $_SESSION['HP'], $_SESSION['ATQQT']);
 }
+elseif ($HU['tipo'] == "CURA"){
+     curarPersonagem($_SESSION['HP'], $HU['efeito'], $_SESSION['ATQQT'], $_SESSION['DEFQT'], $_SESSION['DEF']);
+} 
+elseif ($HU['tipo'] == "BUF"){
+     buffarAtaque($_SESSION['ATQ'], $HU['efeito'], $_SESSION['HP'], $_SESSION['ATQQT'], $_SESSION['DEF']);
+} 
+elseif ($HU['tipo'] == "DBUF1"){
+     impedirInimigo();
+}  
+elseif ($HU['tipo'] == "DBUF2" and $_SESSION['HPQT'] > 50){
+     diminuirAtaqueInimigo($_SESSION['ATQQT'], $HU['efeito'], $_SESSION['HP'], $_SESSION['DEF']);
+} 
+elseif ($HU['tipo'] == "DBUF2" and $_SESSION['HPQT'] < 50){
+    diminuirAtaqueESPInimigo($_SESSION['ESPQT'], $HU['efeito'], $_SESSION['HP'], $_SESSION['DEF']);
+} 
+elseif ($HU['tipo'] == "ESP"){
+     efeitoBiomaClima($_SESSION['Bio']);
+}
+
+echo "HP JOGADOR: " . $_SESSION['HP'] . "<br>";
+echo "DEF JOGADOR: " . $_SESSION['DEF'] . "<br>";
+echo "ATQ JOGADOR: " . $_SESSION['ATQ'] . "<br>";
+echo "HP INIMIGO: " . $_SESSION['HPQT'] . "<br>";
+echo "ATQ INIMIGO: " . $_SESSION['ATQQT'] . "<br>";
+echo "ESP INIMIGO: " . $_SESSION['ESPQT'] . "<br>";
+echo "DEF INIMIGO: " . $_SESSION['DEFQT'] . "<br>";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,7 +47,7 @@ function contabilizarStatus($a, $b, $c, $d, $e, $f, $g, $h){
     <link rel="stylesheet" type="text/css" href="auxiliar.css">
   <title>Perdido em Pindorama</title>
 </head>
-<body>
+<body style="background-image: url(IMG/TJBP.gif);">
 
   <div id="loading">
     <img src="IMG/Papel.gif" alt="Carregando...">

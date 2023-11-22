@@ -12,11 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         habilidadesJogadorNW($_SESSION['idJog']);
     }
 }
+$_SESSION['Bio'] = 'Pampa';
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 criarQT();
-criarPersonagem()
+criarPersonagem();
+
+echo "HP JOGADOR: " . $_SESSION['HP'] . "<br>";
+echo "DEF JOGADOR: " . $_SESSION['DEF'] . "<br>";
+echo "ATQ JOGADOR: " . $_SESSION['ATQ'] . "<br>";
+echo "HP INIMIGO: " . $_SESSION['HPQT'] . "<br>";
+echo "ATQ INIMIGO: " . $_SESSION['ATQQT'] . "<br>";
+echo "ESP INIMIGO: " . $_SESSION['ESPQT'] . "<br>";
+echo "DEF INIMIGO: " . $_SESSION['DEFQT'] . "<br>";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,7 +35,7 @@ criarPersonagem()
     <link rel="stylesheet" type="text/css" href="auxiliar.css">
   <title>Perdido em Pindorama</title>
 </head>
-<body>
+<body style="background-image: url(IMG/TJBP.gif);">
 
   <div id="loading">
     <img src="IMG/Papel.gif" alt="Carregando...">

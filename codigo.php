@@ -115,10 +115,106 @@ function habilidadesJogadorNWP($a){
 function criarPersonagem(){
    $_SESSION['HP'] = 100;
    $_SESSION['DEF'] = 10;
+   $_SESSION['ATQ'] = 10;
 }
 
 function criarQT(){
   $_SESSION['HPQT'] = 200;
+  $_SESSION['ATQQT'] = 40;
   $_SESSION['ESPQT'] = 50;
   $_SESSION['DEFQT'] = 10;
-};
+}
+
+function danoPersonagem($a, $b, $c, $d, $e, $f){
+   $d -= $f;
+   $b -= $e;
+   $a -= $b;
+   $c -= $d;
+   $_SESSION['HPQT'] = $a;
+   $_SESSION['HP'] = $c;
+   $_SESSION['ATQQT'] = 15;
+   $_SESSION['ESPQT'] = 50;
+   $_SESSION['DEFQT'] = 10;
+   $_SESSION['DEF'] = 10;
+   $_SESSION['ATQ'] = 10;
+}
+
+function aumentarDefesa($a, $b, $c, $d){
+   $a += $b;
+   $d -= $a;
+   $c -= $d;
+   $_SESSION['DEF'] = $a;
+   $_SESSION['HP'] = $c;
+   $_SESSION['ATQQT'] = 15;
+   $_SESSION['ESPQT'] = 50;
+   $_SESSION['DEFQT'] = 10;
+   $_SESSION['ATQ'] = 10;
+}
+
+function curarPersonagem($a, $b, $c, $d, $e){
+   $a += $b;
+   $c -= $e;
+   $a -= $c;
+   $_SESSION['HP'] = $a;
+   $_SESSION['ATQQT'] = 15;
+   $_SESSION['ESPQT'] = 50;
+   $_SESSION['DEFQT'] = 10;
+   $_SESSION['DEF'] = 10;
+   $_SESSION['ATQ'] = 10;
+}
+
+function buffarAtaque($a, $b, $c, $d, $e){
+   $a += $b;
+   $d -= $e;
+   $c -= $d;
+   $_SESSION['ATQ'] = $a;
+   $_SESSION['HP'] = $c;
+   $_SESSION['ATQQT'] = 15;
+   $_SESSION['ESPQT'] = 50;
+   $_SESSION['DEFQT'] = 10;
+   $_SESSION['DEF'] = 10;
+}
+
+function impedirInimigo(){
+   $_SESSION['ATQQT'] = 0;
+   $_SESSION['ESPQT'] = 50;
+   $_SESSION['DEFQT'] = 10;
+   $_SESSION['DEF'] = 10;
+   $_SESSION['ATQ'] = 10;
+}
+
+function diminuirAtaqueInimigo($a, $b, $c, $d){
+   $a -= $b;
+   $a -= $d;
+   $c -= $d;
+   $_SESSION['ATQQT'] = $a;
+   $_SESSION['HP'] = $c;
+   $_SESSION['ESPQT'] = 50;
+   $_SESSION['DEFQT'] = 10;
+   $_SESSION['DEF'] = 10;
+   $_SESSION['ATQ'] = 10;
+}
+
+function diminuirAtaqueESPInimigo($a, $b, $c, $d){
+  $a -= $b;
+  $a -= $d;
+  $c -= $d;
+  $_SESSION['ESPQT'] = $a;
+  $_SESSION['HP'] = $c;
+  $_SESSION['ATQQT'] = 50;
+  $_SESSION['DEFQT'] = 10;
+  $_SESSION['DEF'] = 10;
+  $_SESSION['ATQ'] = 10;
+}
+
+function efeitoBiomaClima($a){
+   if($a == "Pampa"){
+     echo $a; 
+   } elseif($a == "Mata Atlantica"){
+     echo $a;
+   } elseif($a == "Caatinga"){
+     echo $a;
+   } elseif($a == "Amazonia"){
+     echo $a;
+   }
+}

@@ -9,7 +9,7 @@ $HU = selecionarHabilidade($id);
 $PI = selecionarPadrao($_SESSION['Inimigo']);
 atividadeTurno($HU, "Jogador");
 padraoAtaqueQT($PI); 
-/*manterStatus()*/
+/*manterStatusPersonagem()*/
 } elseif($_SESSION['HPINI'] <= 0){
       header("location:TJN13.php");
 } elseif($_SESSION['HP'] <= 0){

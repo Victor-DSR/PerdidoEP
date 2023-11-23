@@ -26,7 +26,7 @@
         
         <div class="field">
             <label for="telefone">Senha:</label>
-            <input type="text" name="snh" placeholder='********'>
+            <input type="password" name="snh" placeholder='********'>
         </div>
         <button class="botao-imagem" type="submit" name="cadastrar"> Escrever Novas Paginas </button>
 </form>

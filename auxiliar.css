@@ -44,6 +44,50 @@ body {
     transform: translateX(-50%); /* Move a imagem para a esquerda em 50% da largura da própria imagem */
 }
 
+.diarioExp {
+    position: absolute;
+    font-size: x-large;
+    top: 10%;
+    left: 25%;
+    transform: translateX(-50%); /* Move a imagem para a esquerda em 50% da largura da própria imagem */
+}
+
+.diarioExpD {
+    position: absolute;
+    font-size: x-large;
+    top: 15%;
+    left: 67%;
+    transform: translateX(-50%); /* Move a imagem para a esquerda em 50% da largura da própria imagem */
+}
+
+.scroll-area {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.scroll-area::-webkit-scrollbar {
+    width: 6px; 
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+    background-color: rgba(250, 250, 210, 0.725); 
+    border-radius: 3px; 
+}
+
+.content {
+    width: 25%;
+    height: 70%;
+}
+
+.contentE {
+    font-size:x-large;
+    top: 15%;
+    left: 30%;
+    width: 25%;
+    height: 70%;
+}
+
 #loading {
   position: fixed;
   top: 0;

@@ -30,7 +30,8 @@ if (isset($_POST['cadastrar'])) {
 
     $conexao = conectar();
     $sql = "INSERT INTO jogador(nome, email, senha) VALUES ('$nome','$email','$hash')";
-    return mysqli_query(conectar(), $sql);
+    mysqli_query(conectar(), $sql);
+    header("location:index.php"); 
 }
 if(isset($_POST['login'])){
     $email = $_POST['eml'];
@@ -38,19 +39,29 @@ if(isset($_POST['login'])){
 
     $sql = "SELECT * FROM jogador WHERE email='$email'";
     $resultado = mysqli_query(conectar(), $sql);  
-
     if(mysqli_num_rows($resultado) > 0){
         $dados = mysqli_fetch_assoc($resultado);
+        $aux = $dados['id'];
+        $sql2 = "SELECT * FROM progresso WHERE id_jog='$aux'";
+        $resultado2 = mysqli_query(conectar(), $sql2); 
+        if(mysqli_num_rows($resultado2) == 0){
+           $sql3 = "INSERT INTO progresso(id_jog) VALUES ('$aux')";
+           mysqli_query(conectar(), $sql3);
+        }
         if(password_verify($senha,$dados['senha'])){
-           
             session_start();
             $_SESSION["idJog"] = $dados['id'];
-            $_SESSION["jog"] = $dados['nome'];
-
+            $_SESSION["nome"] = $dados['nome'];
+            $_SESSION["email"] = $dados['email'];
+            $_SESSION["nivel"] = $dados['nivel'];
             header("location:TM.php");
+        } else {
+           header("location:index.php");
         }
-    } 
-  }
+    } else {
+      header("location:index.php"); 
+   } 
+ }
 }
 /* Verificação e Seleção do Banco de Dados*/{
 function verificarHab ($a){
@@ -65,6 +76,12 @@ function verificarHab ($a){
          $resultado2 = mysqli_query(conectar(), $sql2);
          header("location:TJN11.php");
     }
+}
+function selecionarJogadores()
+{
+     $sql = "SELECT nome, pontos FROM `jogador` ORDER BY `jogador`.`pontos` DESC";
+     $resultado = mysqli_query(conectar(), $sql);
+     return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 }
 function selecionarHabs()
 {
@@ -83,6 +100,17 @@ function selecionarPadrao($a)
      $sql = "SELECT * FROM padraoinimigo WHERE id = $a";
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_assoc($resultado);
+}
+function habilidadesJogador($a){
+  $ids = selecionarIdHab($a);
+  $habs = selecionarHabs();
+  foreach ($ids as $id) {
+    foreach ($habs as $habilidade) {
+      if ($id['id_hab'] == $habilidade['id']){
+        echo $habilidade['nome'] . ": <br>" . $habilidade['descricaoD'] . "<br>";
+      }
+    }
+  }
 }
 function habilidadesJogadorNWP($a){
     $ids = selecionarIdHab($a);

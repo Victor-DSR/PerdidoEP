@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once('codigo.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,8 +16,24 @@ session_start();
   </div>
 
   <div class="container">
+    <div class="diarioExp scroll-area contentE">
+      <?php 
+        $dados = selecionarJogadores(); 
+        $i = 1;
+          foreach ($dados as $jogadores) {
+            echo $i . "° Lugar: " . $jogadores['nome'] . " - " . $jogadores['pontos'] . "<br>";
+            $i++;
+          }
+      ?>
+    </div>
+    <div class="diarioExpD" style="top: 10%;">
+    <h2>Perdido Em Pindorama</h2>
+      <img src="IMG/TGif.gif" alt="Gif de Teste">
+    </div>
+    <div class="botoes">
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TM.php">Voltar</a></button>
+    </div>
   </div>
-
   <script>
     setTimeout(function() {
       var loadingElement = document.getElementById('loading');

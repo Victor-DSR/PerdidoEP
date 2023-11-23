@@ -22,9 +22,6 @@ session_start();
  if (isset($_GET['']) == NULL and $_SESSION['idJog'] == NULL) {
     header("location:index.php");
  }
- if (isset($_GET['']) == NULL and isset($_SESSION['idJog']) == TRUE) {
-  header("location:TP.php");
- }
  if (isset($_POST['cadastrar'])) {
     $nome = $_POST['nom'];
     $email = $_POST['eml'];

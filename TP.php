@@ -36,9 +36,12 @@ $dados = selecionarJogador($_SESSION['idJog']);
             <input type="password" name="snh">
         </div>
         <button class="botao-imagem" type="submit" name="alterar"> Reescrever Páginas </button>
-        <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TM.php">Voltar</a></button>
               </form>
+  <div class="diarioExpD" style="top: 80%;left: 90%;">
+    <div class="botoes">
+      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TM.php">Voltar</a></button>
     </div>
+  </div>
   </div>
   <script>
     setTimeout(function() {

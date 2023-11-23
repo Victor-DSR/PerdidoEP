@@ -2,7 +2,7 @@
 header('content-type: text/html; charset=utf-8');
 session_start();
 /* Conectar ao Banco de Dados*/{
-function conectar()
+ function conectar()
   {
     $host = "localhost";
     $usuario = "root";
@@ -19,10 +19,13 @@ function conectar()
    } 
 }
 /*Funções do Site*/ {
-if (isset($_GET['']) == NULL and $_SESSION['idJog'] == NULL) {
+ if (isset($_GET['']) == NULL and $_SESSION['idJog'] == NULL) {
     header("location:index.php");
-}
-if (isset($_POST['cadastrar'])) {
+ }
+ if (isset($_GET['']) == NULL and isset($_SESSION['idJog']) == TRUE) {
+  header("location:TP.php");
+ }
+ if (isset($_POST['cadastrar'])) {
     $nome = $_POST['nom'];
     $email = $_POST['eml'];
     $senha = $_POST['snh'];
@@ -32,8 +35,27 @@ if (isset($_POST['cadastrar'])) {
     $sql = "INSERT INTO jogador(nome, email, senha) VALUES ('$nome','$email','$hash')";
     mysqli_query(conectar(), $sql);
     header("location:index.php"); 
-}
-if(isset($_POST['login'])){
+ } 
+ if (isset($_POST['alterar'])) {
+  $nome = $_POST['nom'];
+  $email = $_POST['eml'];
+  $senhaConfirm = $_POST['snhT'];
+  $senha = $_POST['snh'];
+  $hash = password_hash($senha,PASSWORD_DEFAULT);
+  $sql = "SELECT * FROM jogador WHERE email='$email'";
+  $resultado = mysqli_query(conectar(), $sql);
+  $dados = mysqli_fetch_assoc($resultado);
+
+    if(password_verify($senhaConfirm,$dados['senha'])){
+       $id = $dados['id'];
+       $sql2 = "UPDATE jogador SET `nome`='$nome',`email`='$email',`senha`='$hash' WHERE id='$id'";
+       mysqli_query(conectar(), $sql2);
+       header("location:TM.php"); 
+    } else {
+       header("location:TP.php"); 
+    }
+ }
+ if(isset($_POST['login'])){
     $email = $_POST['eml'];
     $senha = $_POST['snh'];
 
@@ -64,7 +86,7 @@ if(isset($_POST['login'])){
  }
 }
 /* Verificação e Seleção do Banco de Dados*/{
-function verificarHab ($a){
+ function verificarHab ($a){
          $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
          $resultado = mysqli_query(conectar(), $sql);
          $dados = mysqli_fetch_assoc($resultado);
@@ -76,32 +98,32 @@ function verificarHab ($a){
          $resultado2 = mysqli_query(conectar(), $sql2);
          header("location:TJN11.php");
     }
-}
-function selecionarJogadores()
-{
+ }
+ function selecionarJogadores()
+ {
      $sql = "SELECT nome, pontos FROM `jogador` ORDER BY `jogador`.`pontos` DESC";
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-}
-function selecionarHabs()
-{
+ }
+ function selecionarHabs()
+ {
      $sql = "SELECT * FROM habilidades";
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-}
-function selecionarIdHab($a)
-{
+ }
+ function selecionarIdHab($a)
+ {
      $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-}
-function selecionarPadrao($a)
-{
+ }
+ function selecionarPadrao($a)
+ {
      $sql = "SELECT * FROM padraoinimigo WHERE id = $a";
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_assoc($resultado);
-}
-function habilidadesJogador($a){
+ }
+ function habilidadesJogador($a){
   $ids = selecionarIdHab($a);
   $habs = selecionarHabs();
   foreach ($ids as $id) {
@@ -111,8 +133,8 @@ function habilidadesJogador($a){
       }
     }
   }
-}
-function habilidadesJogadorNWP($a){
+ }
+ function habilidadesJogadorNWP($a){
     $ids = selecionarIdHab($a);
     $habs = selecionarHabs();
     foreach ($ids as $id) {
@@ -141,33 +163,38 @@ function habilidadesJogadorNWP($a){
     $resultado = mysqli_query(conectar(), $sql);
     return $dados = mysqli_fetch_assoc($resultado);
   }
+  function selecionarJogador($a){
+    $sql = "SELECT * FROM jogador WHERE id = '$a'";
+    $resultado = mysqli_query(conectar(), $sql);
+    return $dados = mysqli_fetch_assoc($resultado);
+  }
 }
 /* Personagem e Inimigos*/{
-function criarPersonagem(){
+ function criarPersonagem(){
    $_SESSION['HP'] = 100;
    $_SESSION['DEF'] = 10;
    $_SESSION['ATQ'] = 10;
-}
-function criarQT(){
+ }
+ function criarQT(){
   $_SESSION['HPINI'] = 200;
   $_SESSION['ATQINI'] = 20;
   $_SESSION['ESPINI'] = 50;
   $_SESSION['DEFINI'] = 10;
-}
-function criarRPA(){
+ }
+ function criarRPA(){
   $_SESSION['HPRINI'] = 200;
   $_SESSION['ATQRINI'] = 30;
   $_SESSION['DEFRINI'] = 50;
-}
-function criarAP(){
+ }
+ function criarAP(){
   $_SESSION['HPINI'] = 300;
   $_SESSION['CDDINI'] = 2;
   $_SESSION['ATQINI'] = 40;
   $_SESSION['CRITINI'] = 2;
   $_SESSION['ESPINI'] = 50;
   $_SESSION['DEFINI'] = 10;
-}
-function criarRA(){
+ }
+ function criarRA(){
   $_SESSION['HPINI'] = 400;
   $_SESSION['CDDINI'] = 2;
   $_SESSION['CRITINI'] = 1;
@@ -177,7 +204,7 @@ function criarRA(){
  }
 }
 /*Habilidades Jogador*/{
-function ATQ($a, $b, $c){
+ function ATQ($a, $b, $c){
    $a += $_SESSION['ATQ'];
   if($a > $b){
      $a -= $b;
@@ -186,28 +213,28 @@ function ATQ($a, $b, $c){
   } else {
     return $c;
   }
-}
-function DEF($a, $b){
+ }
+ function DEF($a, $b){
   if($_SESSION['contador'] != 2){
      $a += $b;
      return $a;
   } else {
     return $a;
   }
-}
-function CURA($a, $b){
+ }
+ function CURA($a, $b){
   $a += $b;
   return $a;
-}
-function BUF($a, $b){
+ }
+ function BUF($a, $b){
    if($_SESSION['contador'] != 4){
      $a *= $b;
      return $a;
    } else {
    return $a;
    }
-}
-function DBUF($a, $b){
+ }
+ function DBUF($a, $b){
   if($b == 'Jogador'){
        if($a == 'Dispersar Divergente'){
        $_SESSION['ATQINI'] = 0;
@@ -221,8 +248,8 @@ function DBUF($a, $b){
        $_SESSION['DEF'] = 0;
       }
   }
-}
-function ESP($a){
+ }
+ function ESP($a){
    if($a == "Pampa"){
      echo $a; 
    } elseif($a == "Mata Atlantica"){
@@ -232,8 +259,7 @@ function ESP($a){
    } elseif($a == "Amazonia"){;
      echo $a;
    }
-}
-
+ }
 }
 /* Turnos e Status*/{
   function atividadeTurnoJogador($a, $b){
@@ -262,7 +288,7 @@ function ESP($a){
          echo ESP('Mata Atlantica');
     }
   }
-function atividadeTurnoQT($a, $b){
+ function atividadeTurnoQT($a, $b){
   if ($a == "ATQ"){
        $_SESSION['contadorQT'] = '1'; 
        $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
@@ -275,8 +301,8 @@ function atividadeTurnoQT($a, $b){
        $_SESSION['contadorQT'] = '3'; 
        DBUF('Nuvens Aceleradas', $b);
   }
-}
-function manterStatusQT(){
+ }
+ function manterStatusQT(){
   if($_SESSION['contadorQT'] == 1){
       $_SESSION['ESPINI'] = 10; 
       $_SESSION['DEFINI'] = 10;
@@ -285,9 +311,9 @@ function manterStatusQT(){
       $_SESSION['ESPINI'] = 10; 
  } elseif($_SESSION['contadorQT'] == 3){
      $_SESSION['DEF'] = 0; 
-} 
-}
-function manterStatusPersonagem(){
+ } 
+ }
+ function manterStatusPersonagem(){
   if($_SESSION['contadorJog'] == 1){
       $_SESSION['DEF'] = 10;
       $_SESSION['ATQ'] = 10;

@@ -7,9 +7,10 @@ $H3 = explode('+',$_SESSION['H3']);
 if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
 $HU = selecionarHabilidade($id);
 $PI = selecionarPadrao($_SESSION['Inimigo']);
-atividadeTurno($HU, "Jogador");
+atividadeTurnoJogador($HU, "Jogador");
 padraoAtaqueQT($PI); 
-/*manterStatusPersonagem()*/
+manterStatusPersonagem();
+manterStatusQT();
 } elseif($_SESSION['HPINI'] <= 0){
       header("location:TJN13.php");
 } elseif($_SESSION['HP'] <= 0){

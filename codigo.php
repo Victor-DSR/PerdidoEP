@@ -208,104 +208,70 @@ function ESP($a){
 
 }
 /* Turnos e Status*/{
-function atividadeTurnoJogador($a, $b){
-  if ($a['tipo'] == "ATQ"){
-       $_SESSION['HPINI'] = ATQ($a['efeito'], $_SESSION['DEFINI'], $_SESSION['HPINI']);
-  } 
-  elseif ($a['tipo'] == "DEF"){
-       $_SESSION['DEF'] = DEF($_SESSION['DEF'], $a['efeito']);
+  function atividadeTurnoJogador($a, $b){
+    if ($a['tipo'] == "ATQ"){
+         $_SESSION['contadorJog'] = 1;
+         $_SESSION['HPINI'] = ATQ($a['efeito'], $_SESSION['DEFINI'], $_SESSION['HPINI']);
+    } 
+    elseif ($a['tipo'] == "DEF"){
+         $_SESSION['contadorJog'] = 2;
+         $_SESSION['DEF'] = DEF($_SESSION['DEF'], $a['efeito']);
+    }
+    elseif ($a['tipo'] == "CURA"){
+         $_SESSION['contadorJog'] = 3;
+         $_SESSION['HP'] = CURA($_SESSION['HP'], $a['efeito']);
+    } 
+    elseif ($a['tipo'] == "BUF"){
+         $_SESSION['contadorJog'] = 4;
+         $_SESSION['ATQ'] = BUF($_SESSION['ATQ'], $a['efeito']);
+    } 
+    elseif ($a['tipo'] == "DBUF"){
+         $_SESSION['contadorJog'] = 5;
+         DBUF($a['nome'], $b);
+    }
+    elseif ($a['tipo'] == "ESP"){
+         $_SESSION['contadorJog'] = 6;
+         echo ESP('Mata Atlantica');
+    }
   }
-  elseif ($a['tipo'] == "CURA"){
-       $_SESSION['HP'] = CURA($_SESSION['HP'], $a['efeito']);
-  } 
-  elseif ($a['tipo'] == "BUF"){
-       $_SESSION['ATQ'] = BUF($_SESSION['ATQ'], $a['efeito']);
-  } 
-  elseif ($a['tipo'] == "DBUF"){
-       DBUF($a['nome'], $b);
-  }
-  elseif ($a['tipo'] == "ESP"){
-       echo ESP('Mata Atlantica');
-  }
-}
 function atividadeTurnoQT($a, $b){
   if ($a == "ATQ"){
+       $_SESSION['contadorQT'] = '1'; 
        $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
   } 
   elseif ($a == "DEF"){
+       $_SESSION['contadorQT'] = '2'; 
        $_SESSION['DEFINI'] = DEF($_SESSION['DEFINI'], 20);
   } 
   elseif ($a == "DBUF"){
+       $_SESSION['contadorQT'] = '3'; 
        DBUF('Nuvens Aceleradas', $b);
   }
+}
+function manterStatusQT(){
+  if($_SESSION['contadorQT'] == 1){
+      $_SESSION['ESPINI'] = 10; 
+      $_SESSION['DEFINI'] = 10;
+ } elseif($_SESSION['contadorQT'] == 2){
+      $_SESSION['ATQINI'] = 10; 
+      $_SESSION['ESPINI'] = 10; 
+ } elseif($_SESSION['contadorQT'] == 3){
+     $_SESSION['DEF'] = 0; 
+} 
 }
 function manterStatusPersonagem(){
   if($_SESSION['contadorJog'] == 1){
       $_SESSION['DEF'] = 10;
       $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
  } elseif($_SESSION['contadorJog'] == 2){
       $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
  } elseif($_SESSION['contadorJog'] == 3){
       $_SESSION['ATQ'] = 10;
       $_SESSION['DEF'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
  } elseif($_SESSION['contadorJog'] == 4){
       $_SESSION['DEF'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorJog'] == 5){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQ'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
  } elseif($_SESSION['contadorJog'] == 6){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
- } elseif($_SESSION['contadorJog'] == 7){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorJog'] == 8){
-      $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorJog'] == 9){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorJog'] == 10){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorJog'] == 11){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorJog'] == 12){
-      $_SESSION['DEF'] = 10;
-      $_SESSION['ATQ'] = 10;
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
+      echo "a fazer"; 
  }
  }
  function padraoAtaqueQT($a){

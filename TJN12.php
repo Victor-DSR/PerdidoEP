@@ -9,17 +9,18 @@ $HU = selecionarHabilidade($id);
 $PI = selecionarPadrao($_SESSION['Inimigo']);
 atividadeTurnoJogador($HU, "Jogador");
 padraoAtaqueQT($PI); 
-manterStatusPersonagem();
-manterStatusQT();
-} elseif($_SESSION['HPINI'] <= 0){
+    if($_SESSION['HPINI'] <= 0){
       header("location:TJN13.php");
-} elseif($_SESSION['HP'] <= 0){
+    } elseif ($_SESSION['HP'] <= 0){
       echo '
       <script>
       alert("Você sucumbiu aos céus turbulentos do Quero Tempestades!");
       window.location.href = "TM.php";
            </script>';
-}
+    }
+} 
+manterStatusPersonagem();
+manterStatusQT();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -45,6 +46,8 @@ manterStatusQT();
      echo "ATQ INIMIGO: " . $_SESSION['ATQINI'] . "<br>";
      echo "ESP INIMIGO: " . $_SESSION['ESPINI'] . "<br>";
      echo "DEF INIMIGO: " . $_SESSION['DEFINI'] . "<br>";
+     echo "Contador: " . $_SESSION['contador'] . "<br>";
+     echo "Contador Jogador: " . $_SESSION['contadorJog'] . "<br>";
      ?>
       <img src="IMG/TGif.gif" alt="Gif de Teste">
      </div>

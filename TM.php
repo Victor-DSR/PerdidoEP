@@ -18,7 +18,12 @@ session_start();
   <div class="container">
     <div class="central">
       <h1>Perdido Em Pindorama</h1>
-      <img src="IMG/TGif.gif" alt="Gif de Teste">
+    </div>
+    <div class="diarioExp" style="width: 30%; height: auto; top: 30%; left: 40%;">
+    <img src="IMG/TGif.gif" alt="Gif de Teste">
+    </div>
+    <div class="diarioExpD" style="width: 20%; height: auto; top: 40%;">
+    <img src="IMG/CM.gif" alt="Gif de Teste">
     </div>
     <div class="botoes">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="SHJ1.php">Novo Jogo</a></button>

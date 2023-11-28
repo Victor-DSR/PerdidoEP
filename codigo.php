@@ -63,6 +63,7 @@ session_start();
         $aux = $dados['id'];
         $sql2 = "SELECT * FROM progresso WHERE id_jog='$aux'";
         $resultado2 = mysqli_query(conectar(), $sql2); 
+        $dados2 = mysqli_fetch_assoc($resultado2);
         if(mysqli_num_rows($resultado2) == 0){
            $sql3 = "INSERT INTO progresso(id_jog) VALUES ('$aux')";
            mysqli_query(conectar(), $sql3);
@@ -72,7 +73,7 @@ session_start();
             $_SESSION["idJog"] = $dados['id'];
             $_SESSION["nome"] = $dados['nome'];
             $_SESSION["email"] = $dados['email'];
-            $_SESSION["nivel"] = $dados['nivel'];
+            $_SESSION["nivel"] = $dados2['nivel'];
             header("location:TM.php");
         } else {
            header("location:index.php");
@@ -176,7 +177,7 @@ session_start();
   $_SESSION['HPINI'] = 200;
   $_SESSION['ATQINI'] = 20;
   $_SESSION['ESPINI'] = 50;
-  $_SESSION['DEFINI'] = 10;
+  $_SESSION['DEFINI'] = 20;
  }
  function criarRPA(){
   $_SESSION['HPRINI'] = 200;
@@ -200,8 +201,8 @@ session_start();
   $_SESSION['DEFINI'] = 10;
  }
 }
-/*Habilidades Jogador*/{
- function ATQ($a, $b, $c){
+/*Habilidades Jogador e Inimigos*/{
+ function ATQJOG($a, $b, $c){
    $a += $_SESSION['ATQ'];
   if($a > $b){
      $a -= $b;
@@ -211,27 +212,23 @@ session_start();
     return $c;
   }
  }
- function DEF($a, $b){
-  if($_SESSION['contador'] != 2){
+ function DEFJOG($a, $b){
      $a += $b;
      return $a;
-  } else {
-    return $a;
-  }
  }
- function CURA($a, $b){
+ function CURAJOG($a, $b){
   $a += $b;
   return $a;
  }
- function BUF($a, $b){
-   if($_SESSION['contador'] != 4){
+ function BUFJOG($a, $b){
+   if($_SESSION['contadorJog'] != 4){
      $a *= $b;
      return $a;
    } else {
    return $a;
    }
  }
- function DBUF($a, $b){
+ function DBUFJOG($a, $b){
   if($b == 'Jogador'){
        if($a == 'Dispersar Divergente'){
        $_SESSION['ATQINI'] = 0;
@@ -246,7 +243,7 @@ session_start();
       }
   }
  }
- function ESP($a){
+ function ESPJOG($a){
    if($a == "Pampa"){
      echo $a; 
    } elseif($a == "Mata Atlantica"){
@@ -257,56 +254,112 @@ session_start();
      echo $a;
    }
  }
+ function ATQ($a, $b, $c){
+  $a += $_SESSION['ATQ'];
+ if($a > $b){
+    $a -= $b;
+    $c -= $a;
+    return $c;
+ } else {
+   return $c;
+ }
+ }
+ function DEF($a, $b){
+ if($_SESSION['contador'] != 2){
+    $a += $b;
+    return $a;
+ } else {
+   return $a;
+ }
+ }
+ function CURA($a, $b){
+ $a += $b;
+ return $a;
+ }
+ function BUF($a, $b){
+  if($_SESSION['contador'] != 4){
+    $a *= $b;
+    return $a;
+  } else {
+  return $a;
+  }
+ }
+ function DBUF($a, $b){
+ if($b == 'ador'){
+      if($a == 'Dispersar Divergente'){
+      $_SESSION['ATQINI'] = 0;
+      } elseif($a == 'Nuvens Aceleradas'){
+      $_SESSION['DEFINI'] = 0;
+     } 
+ } elseif($b == 'Inimigo'){
+      if($a == 'Dispersar Divergente'){
+      $_SESSION['ATQ'] = 0;
+      } elseif($a == 'Nuvens Aceleradas'){
+      $_SESSION['DEF'] = 0;
+     }
+ }
+}
+function ESP($a){
+  if($a == "Pampa"){
+    echo $a; 
+  } elseif($a == "Mata Atlantica"){
+    echo $a;
+  } elseif($a == "Caatinga"){
+    echo $a;
+  } elseif($a == "Amazonia"){;
+    echo $a;
+  }
+ }
 }
 /* Turnos e Status*/{
   function atividadeTurnoJogador($a, $b){
     if ($a['tipo'] == "ATQ"){
          $_SESSION['contadorJog'] = 1;
-         $_SESSION['HPINI'] = ATQ($a['efeito'], $_SESSION['DEFINI'], $_SESSION['HPINI']);
+         $_SESSION['HPINI'] = ATQJOG($a['efeito'], $_SESSION['DEFINI'], $_SESSION['HPINI']);
     } 
     elseif ($a['tipo'] == "DEF"){
          $_SESSION['contadorJog'] = 2;
-         $_SESSION['DEF'] = DEF($_SESSION['DEF'], $a['efeito']);
+         $_SESSION['DEF'] = DEFJOG($_SESSION['DEF'], $a['efeito']);
     }
     elseif ($a['tipo'] == "CURA"){
          $_SESSION['contadorJog'] = 3;
-         $_SESSION['HP'] = CURA($_SESSION['HP'], $a['efeito']);
+         $_SESSION['HP'] = CURAJOG($_SESSION['HP'], $a['efeito']);
     } 
     elseif ($a['tipo'] == "BUF"){
          $_SESSION['contadorJog'] = 4;
-         $_SESSION['ATQ'] = BUF($_SESSION['ATQ'], $a['efeito']);
+         $_SESSION['ATQ'] = BUFJOG($_SESSION['ATQ'], $a['efeito']);
     } 
     elseif ($a['tipo'] == "DBUF"){
          $_SESSION['contadorJog'] = 5;
-         DBUF($a['nome'], $b);
+         DBUFJOG($a['nome'], $b);
     }
     elseif ($a['tipo'] == "ESP"){
          $_SESSION['contadorJog'] = 6;
-         echo ESP('Mata Atlantica');
+         echo ESPJOG('Mata Atlantica');
     }
   }
  function atividadeTurnoQT($a, $b){
   if ($a == "ATQ"){
-       $_SESSION['contadorQT'] = '1'; 
+       $_SESSION['contador'] = '1'; 
        $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
   } 
   elseif ($a == "DEF"){
-       $_SESSION['contadorQT'] = '2'; 
+       $_SESSION['contador'] = '2'; 
        $_SESSION['DEFINI'] = DEF($_SESSION['DEFINI'], 20);
   } 
   elseif ($a == "DBUF"){
-       $_SESSION['contadorQT'] = '3'; 
+       $_SESSION['contador'] = '3'; 
        DBUF('Nuvens Aceleradas', $b);
   }
  }
  function manterStatusQT(){
-  if($_SESSION['contadorQT'] == 1){
-      $_SESSION['ESPINI'] = 10; 
-      $_SESSION['DEFINI'] = 10;
- } elseif($_SESSION['contadorQT'] == 2){
-      $_SESSION['ATQINI'] = 10; 
-      $_SESSION['ESPINI'] = 10; 
- } elseif($_SESSION['contadorQT'] == 3){
+  if($_SESSION['contador'] == 1){
+      $_SESSION['ESPINI'] = 50; 
+      $_SESSION['DEFINI'] = 20;
+ } elseif($_SESSION['contador'] == 2){
+      $_SESSION['ATQINI'] = 20; 
+      $_SESSION['ESPINI'] = 50; 
+ } elseif($_SESSION['contador'] == 3){
      $_SESSION['DEF'] = 0; 
  } 
  }

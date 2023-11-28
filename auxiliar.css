@@ -32,6 +32,15 @@ body {
     display: block;
 }
 
+.imagem-container {
+    display: flex;
+}
+
+.imagem-container img {
+    width: 50%; /* Cada imagem ocupará metade da largura */
+    height: auto;
+}
+
 .container:hover {
     cursor: url('IMG/CCT.png'), auto;
 }

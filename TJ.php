@@ -37,7 +37,7 @@ $dados = selecionarJogador($_SESSION['idJog']);
         </div>
         <button class="botao-imagem" type="submit" name="alterar"> Reescrever Páginas </button>
               </form>
-  <div class="diarioExpD" style="top: 80%;left: 90%;">
+  <div class="diarioExpD" style="top: 20%;left: 90%;">
     <div class="botoes">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TM.php">Voltar</a></button>
     </div>

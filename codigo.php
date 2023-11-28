@@ -49,7 +49,7 @@ session_start();
        mysqli_query(conectar(), $sql2);
        header("location:TM.php"); 
     } else {
-       header("location:TP.php"); 
+       header("location:TJ.php"); 
     }
  }
  if(isset($_POST['login'])){

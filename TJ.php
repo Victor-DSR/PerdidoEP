@@ -40,6 +40,10 @@ $dados = selecionarJogador($_SESSION['idJog']);
   <div class="diarioExpD" style="top: 20%;left: 90%;">
     <div class="botoes">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TM.php">Voltar</a></button>
+      <form action='codigo.php' method="post" onsubmit="return confirmarEnvio()"> 
+        <input type="hidden" name="excluir">
+        <button class="botao-imagem" type="submit" name="excluir"> Rasgar Paginas </button>
+      </form>
     </div>
   </div>
   </div>
@@ -48,6 +52,9 @@ $dados = selecionarJogador($_SESSION['idJog']);
       var loadingElement = document.getElementById('loading');
       loadingElement.parentNode.removeChild(loadingElement);
     }, 4000);
+    function confirmarEnvio() {
+      var confirma = confirm("Deseja realmente excluir sua conta e todas as suas informações?\nClique em 'OK' para confirmar ou 'Cancelar' para desistir.");
+      return confirma;}
   </script>
 </body>
 </html>

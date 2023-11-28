@@ -16,7 +16,7 @@ include_once('codigo.php');
   </div>
 
   <div class="container">
-    <div class="diarioExp">
+  <div class="diarioExp">
       <h1><?php echo $_SESSION['nome']; ?></h1>
       <h2><?php echo $_SESSION['email']; ?></h2>
       <p>Nível: <?php echo $_SESSION['nivel']; ?>/4 </p>

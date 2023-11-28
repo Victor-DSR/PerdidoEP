@@ -52,6 +52,12 @@ session_start();
        header("location:TJ.php"); 
     }
  }
+ if (isset($_POST['excluir'])) {
+  $id = $_SESSION['idJog'];
+  $sql = "DELETE FROM jogador WHERE id='$id'";
+  mysqli_query(conectar(), $sql);
+  header("location:index.php"); 
+ } 
  if(isset($_POST['login'])){
     $email = $_POST['eml'];
     $senha = $_POST['snh'];

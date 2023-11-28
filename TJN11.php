@@ -6,18 +6,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $i = 0;
         foreach ($habilidades as $habilidade) {
             $i++;
-            $_SESSION["H$i"] = $habilidade."<br>";
+            $_SESSION["H$i"] = $habilidade;
         }
     } else {
         habilidadesJogadorNW($_SESSION['idJog']);
     }
 }
-$_SESSION['Bio'] = 'Pampa';
-$_SESSION['Inimigo'] = '1';
-$_SESSION['Padrao'] = 'p1';
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
+$_SESSION['Bio'] = 'Pampa';
+$_SESSION['Inimigo'] = '1';
+$_SESSION['Padrao'] = 'p1';
 criarQT();
 criarPersonagem();
 ?>
@@ -41,10 +41,10 @@ criarPersonagem();
      echo "HP JOGADOR: " . $_SESSION['HP'] . "<br>";
      echo "DEF JOGADOR: " . $_SESSION['DEF'] . "<br>";
      echo "ATQ JOGADOR: " . $_SESSION['ATQ'] . "<br>";
-     echo "HP INIMIGO: " . $_SESSION['HPQT'] . "<br>";
-     echo "ATQ INIMIGO: " . $_SESSION['ATQQT'] . "<br>";
-     echo "ESP INIMIGO: " . $_SESSION['ESPQT'] . "<br>";
-     echo "DEF INIMIGO: " . $_SESSION['DEFQT'] . "<br>";
+     echo "HP INIMIGO: " . $_SESSION['HPINI'] . "<br>";
+     echo "ATQ INIMIGO: " . $_SESSION['ATQINI'] . "<br>";
+     echo "ESP INIMIGO: " . $_SESSION['ESPINI'] . "<br>";
+     echo "DEF INIMIGO: " . $_SESSION['DEFINI'] . "<br>";
      ?>
       <img src="IMG/TGif.gif" alt="Gif de Teste">
      </div>

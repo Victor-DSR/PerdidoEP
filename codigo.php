@@ -150,7 +150,7 @@ session_start();
       foreach ($habs as $habilidade) {
         if ($id['id_hab'] == $habilidade['id']){
           $i++;
-          $_SESSION["H$i"] = $habilidade['nome'] . "+" . $habilidade['id'];
+          $_SESSION["H$i"] = $habilidade['nome'];
         }
       }
     }

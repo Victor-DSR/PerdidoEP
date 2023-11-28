@@ -48,7 +48,7 @@ body {
     position: absolute;
     font-size: x-large;
     top: 10%;
-    left: 25%;
+    left: 30%;
     transform: translateX(-50%); /* Move a imagem para a esquerda em 50% da largura da própria imagem */
 }
 

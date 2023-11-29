@@ -172,6 +172,14 @@ session_start();
     $resultado = mysqli_query(conectar(), $sql);
     return $dados = mysqli_fetch_assoc($resultado);
   }
+  function contarPontos($a, $b){
+    $sql = "UPDATE jogador SET pontos = '$a' WHERE jogador.id = '$b';";
+    $resultado = mysqli_query(conectar(), $sql);
+  }
+  function inserirHab($a, $b){
+    $sql = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','$b')";
+    $resultado2 = mysqli_query(conectar(), $sql);
+   }
 }
 /* Personagem e Inimigos*/{
  function criarPersonagem(){

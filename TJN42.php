@@ -21,17 +21,13 @@ $HU = selecionarHabilidade($id);
   </div>
 
   <div class="container">
-  <div class="central" style="left: 35%;">
-      <?php
-     echo "HP JOGADOR: " . $_SESSION['HP'] . "<br>";
-     echo "DEF JOGADOR: " . $_SESSION['DEF'] . "<br>";
-     echo "ATQ JOGADOR: " . $_SESSION['ATQ'] . "<br>";
-     echo "HP INIMIGO: " . $_SESSION['HPQT'] . "<br>";
-     echo "ATQ INIMIGO: " . $_SESSION['ATQQT'] . "<br>";
-     echo "ESP INIMIGO: " . $_SESSION['ESPQT'] . "<br>";
-     echo "DEF INIMIGO: " . $_SESSION['DEFQT'] . "<br>";
-     ?>
-      <img src="IMG/TGif.gif" alt="Gif de Teste">
+  <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
+        <img src="IMG/TGif.gif" alt="Gif de Teste">
+        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+     </div>
+     <div class="diarioExpD" style="width: 35%; height: auto; top: 13%; left: 70%;">
+        <img src="IMG/RA.gif" alt="Gif de Teste">
+        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN42.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>

@@ -1,6 +1,5 @@
 <?php
 include_once('codigo.php');
-$_SESSION['nivel'] = 4;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,22 +25,22 @@ $_SESSION['nivel'] = 4;
         echo "Você ainda não possui nível.";
         break;
     case 1:
-        echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=1'>Pampa</a><br>";
         break;
     case 2:
-        echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
-        echo "<a style='text-decoration: none;color: inherit;'href='MAP.php'>Mata Atlântica</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=1'>Pampa</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=2'>Mata Atlântica</a><br>";
         break;
     case 3:
-        echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
-        echo "<a style='text-decoration: none;color: inherit;'href='MAP.php'>Mata Atlântica</a><br>";
-        echo "<a style='text-decoration: none;color: inherit;'href='CP.php'>Caatinga</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=1'>Pampa</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=2'>Mata Atlântica</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=3'>Caatinga</a><br>";
         break;
     case 4:
-      echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
-      echo "<a style='text-decoration: none;color: inherit;'href='MAP.php'>Mata Atlântica</a><br>";
-      echo "<a style='text-decoration: none;color: inherit;'href='CP.php'>Caatinga</a><br>";
-        echo "<a style='text-decoration: none;color: inherit;'href='AMP.php'>Amazônia</a><br>";
+      echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=1'>Pampa</a><br>";
+      echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=2'>Mata Atlântica</a><br>";
+      echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=3'>Caatinga</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='TPN.php?id=4,5'>Amazônia</a><br>";
         break;
 }
         ?>

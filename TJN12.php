@@ -21,6 +21,7 @@ padraoAtaqueQT($PI);
 } 
 manterStatusPersonagem();
 manterStatusQT();
+$_SESSION['HP'] = 500;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,19 +38,13 @@ manterStatusQT();
   </div>
 
   <div class="container">
-  <div class="central" style="left: 35%;">
-      <?php
-     echo "HP JOGADOR: " . $_SESSION['HP'] . "<br>";
-     echo "DEF JOGADOR: " . $_SESSION['DEF'] . "<br>";
-     echo "ATQ JOGADOR: " . $_SESSION['ATQ'] . "<br>";
-     echo "HP INIMIGO: " . $_SESSION['HPINI'] . "<br>";
-     echo "ATQ INIMIGO: " . $_SESSION['ATQINI'] . "<br>";
-     echo "ESP INIMIGO: " . $_SESSION['ESPINI'] . "<br>";
-     echo "DEF INIMIGO: " . $_SESSION['DEFINI'] . "<br>";
-     echo "Contador: " . $_SESSION['contador'] . "<br>";
-     echo "Contador Jogador: " . $_SESSION['contadorJog'] . "<br>";
-     ?>
-      <img src="IMG/TGif.gif" alt="Gif de Teste">
+  <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
+        <img src="IMG/TGif.gif" alt="Gif de Teste">
+        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+     </div>
+     <div class="diarioExpD" style="width: 30%; height: auto; top: 20%; left: 70%;">
+        <img src="IMG/QT.gif" alt="Gif de Teste">
+        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>

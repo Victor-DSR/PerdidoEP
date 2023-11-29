@@ -1,3 +1,11 @@
+<?php
+include_once('codigo.php');
+contarPontos($_SESSION['HP'], $_SESSION['idJog']);
+$H1 = explode('+',$_SESSION['H1']);
+$H2 = explode('+',$_SESSION['H2']);
+$H3 = explode('+',$_SESSION['H3']);
+$PI = selecionarPadrao($_SESSION['Inimigo']); 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,33 +21,39 @@
   </div>
 
   <div class="container">
-  <div class="central" style="left: 35%;">
-      <?php
-     echo "HP JOGADOR: " . $_SESSION['HP'] . "<br>";
-     echo "DEF JOGADOR: " . $_SESSION['DEF'] . "<br>";
-     echo "ATQ JOGADOR: " . $_SESSION['ATQ'] . "<br>";
-     echo "HP INIMIGO: " . $_SESSION['HPINI'] . "<br>";
-     echo "ATQ INIMIGO: " . $_SESSION['ATQINI'] . "<br>";
-     echo "ESP INIMIGO: " . $_SESSION['ESPINI'] . "<br>";
-     echo "DEF INIMIGO: " . $_SESSION['DEFINI'] . "<br>";
-     echo "Contador: " . $_SESSION['contador'] . "<br>";
-     echo "Contador Jogador: " . $_SESSION['contadorJog'] . "<br>";
-     ?>
-      <img src="IMG/TGif.gif" alt="Gif de Teste">
+  <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
+        <img src="IMG/TGif.gif" alt="Gif de Teste">
+        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
      </div>
-  <div class="botoesE">
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo$H2[1]?>"><?php echo $H2[0] ?></a></button>
-      <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJn12.php?id=<?php echo$H3[1]?>"><?php echo $H3[0] ?></a></button>
-    </div>
+     <div class="diarioExpD scroll-area content">
+     <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+     <form action="TJN21.php" method="POST">
+            <div class="field">
+                Escolha uma dentre estas três habilidades:
+                <label><input type='checkbox' name='Hab' value='9'>Nuvem na Cartola</label>
+                <label><input type='checkbox' name='Hab' value='10'>Nuvem Massiva</label>
+                <label><input type='checkbox' name='Hab' value='11'>Nuvens Aceleradas</label>
+            </div>
+                <input class="botao-imagem" type="submit" value="Selecionar Habilidade" onclick="validarFormulario(event)"></input>
+        </form>
+     </div>
   </div>
   </div>
-
   <script>
     setTimeout(function() {
       var loadingElement = document.getElementById('loading');
       loadingElement.parentNode.removeChild(loadingElement);
     }, 800);
+    function validarFormulario(event) {
+      var checkboxes = document.querySelectorAll('input[name="Hab"]');
+      var habilidadesSelecionadas = Array.from(checkboxes).filter(function (checkbox) {
+      return checkbox.checked;
+    });
+      if (habilidadesSelecionadas.length > 1) {
+        event.preventDefault();
+        alert("Selecione no máximo 1 habilidade.");
+        }
+    }
   </script>
 
 </body>

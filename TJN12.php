@@ -54,7 +54,7 @@ manterStatusQT();
         echo "Ataque: " . $_SESSION['ATQINI'] . "<br>";
         echo "Defesa: " . $_SESSION['DEFINI'] . "<br>";
         ?></p>
-         <div><?php  echo $_SESSION['descAcao']; ?></div>
+         <div style="width: 80%;"><?php  echo $_SESSION['descAcao']; ?></div>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>

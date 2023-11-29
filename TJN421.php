@@ -8,6 +8,7 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
     $HU = selecionarHabilidade($id);
     $PI = selecionarPadrao($_SESSION['Inimigo']);
     atividadeTurnoJogador($HU, "Jogador"); 
+    padraoAtaqueRAU($PI);
         if($_SESSION['HPINI'] <= 0){
           header("location:TJN431.php");
         } elseif ($_SESSION['HP'] <= 0){
@@ -18,6 +19,9 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
                </script>';
         }
     }
+$INFO = selecionarHabilidade($id);
+manterStatusPersonagem();
+manterStatusRAU();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,11 +40,21 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
   <div class="container">
   <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php 
+        echo "Vida: " . $_SESSION['HP'] . "<br>";
+        echo "Ataque: " . $_SESSION['ATQ'] . "<br>";
+        echo "Defesa: " . $_SESSION['DEF'] . "<br>";
+        ?></p>
+        <div><?php  echo $INFO['descricao']; ?></div>
      </div>
      <div class="diarioExpD" style="width: 35%; height: auto; top: 13%; left: 70%;">
         <img src="IMG/RAU.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php 
+        echo "Vida: " . $_SESSION['HPINI'] . "<br>";
+        echo "Ataque: " . $_SESSION['ATQINI'] . "<br>";
+        echo "Defesa: " . $_SESSION['DEFINI'] . "<br>";
+        ?></p>
+         <div style="width: 80%;"><?php  echo $_SESSION['descAcao']; ?></div>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN421.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>

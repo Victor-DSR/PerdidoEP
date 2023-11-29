@@ -17,7 +17,7 @@ $_SESSION['nivel'] = 4;
   </div>
 
   <div class="container">
-  <div class="diarioExp">
+  <div class="diarioExp scroll-area content">
       <h1><?php echo $_SESSION['nome']; ?></h1>
       <h2><?php echo $_SESSION['email']; ?></h2>
       <p>Nível: <?php echo $_SESSION['nivel']; ?>/4 </p>

@@ -1,11 +1,17 @@
 <?php
 include_once('codigo.php');
+if(isset($_POST['Hab'])){
+  $id_hab = $_POST['Hab'];
+} else {
+  $id_hab = '0';
+}
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Amazonia';
 $_SESSION['Inimigo'] = '4';
 $_SESSION['Padrao'] = 'p1';
+$_SESSION['HP'] += 50;
 criarRA();
 ?>
 <!DOCTYPE html>

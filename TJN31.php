@@ -1,11 +1,17 @@
 <?php
 include_once('codigo.php');
+if(isset($_POST['Hab'])){
+  $id_hab = $_POST['Hab'];
+} else {
+  $id_hab = '0';
+}
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Caatinga';
 $_SESSION['Inimigo'] = '3';
 $_SESSION['Padrao'] = 'p1';
+$_SESSION['HP'] += 50;
 criarAP();
 ?>
 <!DOCTYPE html>
@@ -25,7 +31,7 @@ criarAP();
   <div class="container">
   <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p><?php inserirHab($_SESSION['idJog'], $_POST['Hab']); ?></p>
+        <p><?php inserirHab($_SESSION['idJog'], $id_hab); ?></p>
      </div>
      <div class="diarioExpD scroll-area content">
       TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO

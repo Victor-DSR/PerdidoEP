@@ -8,16 +8,20 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
   $HU = selecionarHabilidade($id);
   $PI = selecionarPadrao($_SESSION['Inimigo']);
   atividadeTurnoJogador($HU, "Jogador"); 
+  padraoAtaquePP($PI);
       if($_SESSION['HPINI'] <= 0){
         header("location:TJN23.php");
       } elseif ($_SESSION['HP'] <= 0){
         echo '
         <script>
-        alert("Você sucumbiu aos céus turbulentos do Quero Tempestades!");
+        alert("Você sucumbiu aos tremores do Pedrugulho Peludo!");
         window.location.href = "TM.php";
              </script>';
       }
-  } 
+  }
+$INFO = selecionarHabilidade($id);
+manterStatusPersonagem();
+manterStatusPP();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -34,13 +38,23 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
   </div>
 
   <div class="container">
-  <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
+  <div class="diarioExp" style="width: 30%; height: auto; top: 17%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php 
+        echo "Vida: " . $_SESSION['HP'] . "<br>";
+        echo "Ataque: " . $_SESSION['ATQ'] . "<br>";
+        echo "Defesa: " . $_SESSION['DEF'] . "<br>";
+        ?></p>
+        <div><?php  echo $INFO['descricao']; ?></div>
      </div>
-     <div class="diarioExpD" style="width: 40%; height: auto; top: 28%; left: 72%;">
+     <div class="diarioExpD" style="width: 40%; height: auto; top: 25%; left: 72%;">
         <img src="IMG/PP.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php 
+        echo "Vida: " . $_SESSION['HPINI'] . "<br>";
+        echo "Ataque: " . $_SESSION['ATQINI'] . "<br>";
+        echo "Defesa: " . $_SESSION['DEFINI'] . "<br>";
+        ?></p>
+         <div style="width: 80%;"><?php  echo $_SESSION['descAcao']; ?></div>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN22.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>

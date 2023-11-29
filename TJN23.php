@@ -52,7 +52,7 @@ $PI = selecionarPadrao($_SESSION['Inimigo']);
     });
       if (habilidadesSelecionadas.length > 1) {
         event.preventDefault();
-        alert("Selecione no máximo 1 habilidade.");
+        alert("Selecione no máximo e no mínimo uma habilidade.");
         }
     }
   </script>

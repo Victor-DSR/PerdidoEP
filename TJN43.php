@@ -4,6 +4,8 @@ $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Amazonia';
+$_SESSION['Inimigo'] = '4';
+$_SESSION['Padrao'] = 'p1';
 criarRA();
 ?>
 <!DOCTYPE html>

@@ -50,10 +50,10 @@ $PI = selecionarPadrao($_SESSION['Inimigo']);
       var habilidadesSelecionadas = Array.from(checkboxes).filter(function (checkbox) {
       return checkbox.checked;
     });
-      if (habilidadesSelecionadas.length > 1) {
+      if (habilidadesSelecionadas.length > 1){
         event.preventDefault();
-        alert("Selecione no máximo 1 habilidade.");
-        }
+        alert("Selecione no mínimo uma habilidade.");
+      } 
     }
   </script>
 

@@ -193,6 +193,9 @@ session_start();
     $resultado = mysqli_query(conectar(), $sql);
   }
   function inserirHab($a, $b){
+    if ($b == 0){
+       echo "Você não aprendeu nenhuma habilidade.";
+    } else {
     $id = selecionarJogHab($a, $b);
     $habilidade = selecionarHabilidade($b);
     $nome = $habilidade['nome'];
@@ -204,6 +207,7 @@ session_start();
         echo "Você aprendeu uma nova habilidade! $nome, volte para a tela de menu para saber mais.";
       }
   }
+ }
   function contarNivel($a, $b){
     $prog = selecionarProgresso($a);
     $nivel = $prog['nivel'];
@@ -229,7 +233,7 @@ session_start();
  function criarPP(){
   $_SESSION['HPINI'] = 200;
   $_SESSION['ATQINI'] = 30;
-  $_SESSION['DEFINI'] = 0;
+  $_SESSION['DEFINI'] = 30;
  }
  function criarAP(){
   $_SESSION['HPINI'] = 300;
@@ -268,12 +272,8 @@ session_start();
   return $a;
  }
  function BUFJOG($a, $b){
-   if($_SESSION['contadorJog'] != 4){
      $a *= $b;
      return $a;
-   } else {
-   return $a;
-   }
  }
  function DBUFJOG($a, $b){
   if($b == 'Jogador'){
@@ -312,12 +312,8 @@ session_start();
  }
  }
  function DEF($a, $b){
- if($_SESSION['contador'] != 2){
     $a += $b;
     return $a;
- } else {
-   return $a;
- }
  }
  function CURA($a, $b){
  $a += $b;
@@ -388,15 +384,34 @@ session_start();
  function atividadeTurnoQT($a, $b){
   if ($a == "ATQ"){
        $_SESSION['contador'] = '1'; 
+       $_SESSION['descAcao'] = 'Quero Tempestades sobe aos céus e então retorna em alta velocidade usando suas garras para ataca-lo.';
        $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
   } 
   elseif ($a == "DEF"){
        $_SESSION['contador'] = '2'; 
+       $_SESSION['descAcao'] = 'Quero Tempestades recua rapidamente enquanto usa suas asas para cobrir seu corpo em defesa aos seus ataques.';
        $_SESSION['DEFINI'] = DEF($_SESSION['DEFINI'], 20);
   } 
   elseif ($a == "DBUF"){
        $_SESSION['contador'] = '3'; 
+       $_SESSION['descAcao'] = 'Quero Tempestades invoca um poderoso tufão ao bater suas asas para lhe desestabilizar e o deixar mais vulneravel a seus ataques.';
        DBUF('Nuvens Aceleradas', $b);
+  }
+ }
+ function atividadeTurnoPP($a){
+  if ($a == "ATQ"){
+       $_SESSION['contador'] = '1'; 
+       $_SESSION['descAcao'] = 'Pedregulho Peludo salta em sua direção lhe dando um poderoso golpe.';
+       $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
+  } 
+  elseif ($a == "CURA"){
+       $_SESSION['contador'] = '2'; 
+       $_SESSION['descAcao'] = 'Pedregulho Peludo se abaixa e fica em posição defensiva enquanto come algumas gramas para recuperar seu vigor.';
+       $_SESSION['HPINI'] = CURA($_SESSION['HPINI'], 30);
+  } 
+  elseif ($a == "ESP"){
+       $_SESSION['contador'] = '3'; 
+       $_SESSION['descAcao'] = 'Pedregulho Peludo levanta por inteiro fazendo uma grande sombra sobre você, ao cair o gigante gera tremores por toda a terra dificultando seus ataques.';
   }
  }
  function manterStatusQT(){
@@ -409,6 +424,17 @@ session_start();
  } elseif($_SESSION['contador'] == 3){
      $_SESSION['DEF'] = 0; 
  } 
+ }
+ function manterStatusPP(){
+  if($_SESSION['contador'] == 1){
+      $_SESSION['ATQINI'] = 30;
+      $_SESSION['DEFINI'] = 30;
+    } elseif($_SESSION['contador'] == 2){
+      $_SESSION['ATQINI'] = 30;
+      $_SESSION['DEFINI'] = 30;
+    } elseif($_SESSION['contador'] == 3){
+      $_SESSION['ATQ'] = 0; 
+    } 
  }
  function manterStatusPersonagem(){
   if($_SESSION['contadorJog'] == 1){
@@ -455,4 +481,34 @@ session_start();
        atividadeTurnoQT($a['p9'], "Inimigo"); 
       }
   }
+  function padraoAtaquePP($a){
+    if($_SESSION['Padrao'] == 'p1'){
+         $_SESSION['Padrao'] = 'p2';
+         atividadeTurnoPP($a['p1'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p2'){
+         $_SESSION['Padrao'] = 'p3';
+         atividadeTurnoPP($a['p2'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p3'){
+         $_SESSION['Padrao'] = 'p4';
+         atividadeTurnoPP($a['p3'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p4'){
+         $_SESSION['Padrao'] = 'p5';
+         atividadeTurnoPP($a['p4'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p5'){
+         $_SESSION['Padrao'] = 'p6';
+         atividadeTurnoPP($a['p5'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p6'){
+         $_SESSION['Padrao'] = 'p7';
+         atividadeTurnoPP($a['p6'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p7'){
+         $_SESSION['Padrao'] = 'p8';
+         atividadeTurnoPP($a['p7'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p8'){
+         $_SESSION['Padrao'] = 'p9';
+         atividadeTurnoPP($a['p8'], "Inimigo"); 
+        } elseif($_SESSION['Padrao'] == 'p9'){
+         $_SESSION['Padrao'] = 'p1';
+         atividadeTurnoPP($a['p9'], "Inimigo"); 
+        }
+    }
 }

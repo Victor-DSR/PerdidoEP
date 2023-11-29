@@ -19,6 +19,7 @@ padraoAtaqueQT($PI);
            </script>';
     }
 } 
+$INFO = selecionarHabilidade($id);
 manterStatusPersonagem();
 manterStatusQT();
 ?>
@@ -37,13 +38,23 @@ manterStatusQT();
   </div>
 
   <div class="container">
-  <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
+  <div class="diarioExp" style="width: 30%; height: auto; top: 10%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php 
+        echo "Vida: " . $_SESSION['HP'] . "<br>";
+        echo "Ataque: " . $_SESSION['ATQ'] . "<br>";
+        echo "Defesa: " . $_SESSION['DEF'] . "<br>";
+        ?></p>
+        <div><?php  echo $INFO['descricao']; ?></div>
      </div>
-     <div class="diarioExpD" style="width: 30%; height: auto; top: 20%; left: 70%;">
+     <div class="diarioExpD" style="width: 30%; height: auto; top: 10%; left: 70%;">
         <img src="IMG/QT.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php 
+        echo "Vida: " . $_SESSION['HPINI'] . "<br>";
+        echo "Ataque: " . $_SESSION['ATQINI'] . "<br>";
+        echo "Defesa: " . $_SESSION['DEFINI'] . "<br>";
+        ?></p>
+         <div><?php  echo $_SESSION['descAcao']; ?></div>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo$H1[1]?>"><?php echo $H1[0] ?></a></button>

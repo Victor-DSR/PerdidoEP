@@ -4,6 +4,8 @@ $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Caatinga';
+$_SESSION['Inimigo'] = '3';
+$_SESSION['Padrao'] = 'p1';
 criarAP();
 ?>
 <!DOCTYPE html>

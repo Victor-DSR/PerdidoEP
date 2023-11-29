@@ -121,6 +121,12 @@ session_start();
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
  }
+ function selecionarJogHab($a, $b)
+ {
+     $sql = "SELECT * FROM jog_hab WHERE id_jog='$a' AND id_hab='$b'";
+     $resultado = mysqli_query(conectar(), $sql);
+     return $dados = mysqli_fetch_assoc($resultado);
+ }
  function selecionarPadrao($a)
  {
      $sql = "SELECT * FROM padraoinimigo WHERE id = $a";
@@ -177,9 +183,17 @@ session_start();
     $resultado = mysqli_query(conectar(), $sql);
   }
   function inserirHab($a, $b){
-    $sql = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','$b')";
-    $resultado2 = mysqli_query(conectar(), $sql);
-   }
+    $id = selecionarJogHab($a, $b);
+    $habilidade = selecionarHabilidade($b);
+    $nome = $habilidade['nome'];
+      if(isset($id['id_hab']) != NULL){
+        echo "Você já possui esta Habilidade.";
+      } else {
+        $sql = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','$b')";
+        $resultado = mysqli_query(conectar(), $sql);
+        echo "Você aprendeu uma nova habilidade! $nome, volte para a telas de menu para saber mais.";
+      }
+  }
 }
 /* Personagem e Inimigos*/{
  function criarPersonagem(){
@@ -193,7 +207,7 @@ session_start();
   $_SESSION['ESPINI'] = 50;
   $_SESSION['DEFINI'] = 20;
  }
- function criarRPA(){
+ function criarPP(){
   $_SESSION['HPRINI'] = 200;
   $_SESSION['ATQRINI'] = 30;
   $_SESSION['DEFRINI'] = 50;

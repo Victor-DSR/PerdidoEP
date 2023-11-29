@@ -1,11 +1,10 @@
 <?php
 include_once('codigo.php');
-inserirHab($_SESSION['idJog'], $_POST['Hab']);
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Mata Atlantica';
-criarRPA();
+criarPP();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,7 +23,7 @@ criarRPA();
   <div class="container">
   <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p><?php inserirHab($_SESSION['idJog'], $_POST['Hab']); ?></p>
      </div>
      <div class="diarioExpD scroll-area content">
       TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO

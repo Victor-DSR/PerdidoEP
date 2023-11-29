@@ -225,6 +225,15 @@ textarea{
     align-items: flex-end;
 }
 
+.botoesI {
+    position: absolute;
+    top: 51%;
+    right: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .botao-imagem {
     background: url('IMG/BM.png') center/cover no-repeat; 
     border: none;

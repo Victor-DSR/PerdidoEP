@@ -23,12 +23,12 @@
         <input class="form-control" type="password" name="snh"/>
     </div>
 
-    <div class="field">
+    <div class="botoesE" style="top: 45%; right: 68%;">
     <button class="botao-imagem" type="submit" name="login"> Fazer Anotações </button>
     </div>
 
      </form>
-        <div class='botoesI'>
+        <div class='botoesE' style="top: 45%; right: 53%;">
             <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TC.php">Novo Escritor</a></button>
         </div>
     </div>

@@ -100,6 +100,9 @@ session_start();
     } else {
          $sql2 = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','0'),('$a','1'),('$a','2')";
          $resultado2 = mysqli_query(conectar(), $sql2);
+         $_SESSION['H1'] = "Golpe de Sorte+0";
+         $_SESSION['H2'] = "Defesa Alta+1";
+         $_SESSION['H3'] = "RespirarFundo+2";
          header("location:TJN11.php");
     }
  }
@@ -173,13 +176,20 @@ session_start();
     $resultado = mysqli_query(conectar(), $sql);
     return $dados = mysqli_fetch_assoc($resultado);
   }
+  function selecionarProgresso($a){
+    $sql = "SELECT * FROM progresso WHERE id_jog = '$a'";
+    $resultado = mysqli_query(conectar(), $sql);
+    return $dados = mysqli_fetch_assoc($resultado);
+  }
   function selecionarJogador($a){
     $sql = "SELECT * FROM jogador WHERE id = '$a'";
     $resultado = mysqli_query(conectar(), $sql);
     return $dados = mysqli_fetch_assoc($resultado);
   }
   function contarPontos($a, $b){
-    $sql = "UPDATE jogador SET pontos = '$a' WHERE jogador.id = '$b';";
+    $jog = selecionarJogador($b);
+    $pontos = $jog['pontos'] + $a;
+    $sql = "UPDATE jogador SET pontos = '$pontos' WHERE jogador.id = '$b';";
     $resultado = mysqli_query(conectar(), $sql);
   }
   function inserirHab($a, $b){
@@ -191,7 +201,16 @@ session_start();
       } else {
         $sql = "INSERT INTO jog_hab(id_jog, id_hab) VALUES ('$a','$b')";
         $resultado = mysqli_query(conectar(), $sql);
-        echo "Você aprendeu uma nova habilidade! $nome, volte para a telas de menu para saber mais.";
+        echo "Você aprendeu uma nova habilidade! $nome, volte para a tela de menu para saber mais.";
+      }
+  }
+  function contarNivel($a, $b){
+    $prog = selecionarProgresso($a);
+    $nivel = $prog['nivel'];
+      if($nivel < $b){
+        $sql = "UPDATE progresso SET nivel='$b' WHERE id_jog='$a';";
+        $resultado = mysqli_query(conectar(), $sql);~
+        $_SESSION['nivel'] = $b;
       }
   }
 }

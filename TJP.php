@@ -1,5 +1,6 @@
 <?php
 include_once('codigo.php');
+$_SESSION['nivel'] = 4;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

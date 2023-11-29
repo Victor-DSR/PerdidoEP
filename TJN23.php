@@ -1,6 +1,7 @@
 <?php
 include_once('codigo.php');
 contarPontos($_SESSION['HP'], $_SESSION['idJog']);
+contarNivel($_SESSION['idJog'], 2);
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);

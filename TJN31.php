@@ -1,6 +1,5 @@
 <?php
 include_once('codigo.php');
-inserirHab($_SESSION['idJog'], $_POST['Hab']);
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);

@@ -21,7 +21,6 @@ padraoAtaqueQT($PI);
 } 
 manterStatusPersonagem();
 manterStatusQT();
-$_SESSION['HP'] = 500;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

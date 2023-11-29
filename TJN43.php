@@ -4,6 +4,7 @@ $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Amazonia';
+criarRA();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,7 +34,7 @@ $_SESSION['Bio'] = 'Amazonia';
       TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
       TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
      </div>
-  <div class="botoesE">
+     <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN421.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN421.php?id=<?php echo $H2[1]?>"><?php echo $H2[0] ?></a></button>
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJn421.php?id=<?php echo $H3[1]?>"><?php echo $H3[0] ?></a></button>

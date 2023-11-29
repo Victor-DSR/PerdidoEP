@@ -208,9 +208,9 @@ session_start();
   $_SESSION['DEFINI'] = 20;
  }
  function criarPP(){
-  $_SESSION['HPRINI'] = 200;
-  $_SESSION['ATQRINI'] = 30;
-  $_SESSION['DEFRINI'] = 50;
+  $_SESSION['HPINI'] = 200;
+  $_SESSION['ATQINI'] = 30;
+  $_SESSION['DEFINI'] = 0;
  }
  function criarAP(){
   $_SESSION['HPINI'] = 300;

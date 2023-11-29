@@ -4,7 +4,20 @@ $id = $_GET['id'];
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
-$HU = selecionarHabilidade($id);
+if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
+    $HU = selecionarHabilidade($id);
+    $PI = selecionarPadrao($_SESSION['Inimigo']);
+    atividadeTurnoJogador($HU, "Jogador"); 
+        if($_SESSION['HPINI'] <= 0){
+          header("location:TJN431.php");
+        } elseif ($_SESSION['HP'] <= 0){
+          echo '
+          <script>
+          alert("Você sucumbiu aos céus turbulentos do Quero Tempestades!");
+          window.location.href = "TM.php";
+               </script>';
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

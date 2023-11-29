@@ -4,7 +4,7 @@ $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
 $_SESSION['Bio'] = 'Amazonia';
-criarRPA();
+criarRA();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

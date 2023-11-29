@@ -326,8 +326,8 @@ session_start();
       $_SESSION['DEF'] = 0;
      }
  }
-}
-function ESP($a){
+ }
+ function ESP($a){
   if($a == "Pampa"){
     echo $a; 
   } elseif($a == "Mata Atlantica"){

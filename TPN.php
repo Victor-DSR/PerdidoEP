@@ -1,6 +1,6 @@
 <?php
 include_once('codigo.php');
-$_SESSION['nivel'] = 4;
+$dados = selecionarHistoria($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,10 +18,17 @@ $_SESSION['nivel'] = 4;
 
   <div class="container">
     <div class="diarioExp scroll-area content" style="top: 15%;">
-        <?php habilidadesJogador($_SESSION['idJog']); ?>
+        <?php 
+        echo $dados['descricao'] . "<br>"; 
+        echo "<img src='IMG/" . $dados['IMG'] . "' alt='IMG'>";
+        ?>
     </div>
     <div class="diarioExpD scroll-area content">
-        <?php habilidadesJogador($_SESSION['idJog']); ?>
+    <?php 
+        echo $dados['historia']  . "<br>"; 
+        echo $dados['inimigo']  . "<br>"; 
+        echo "<img src='IMG/" . $dados['GIF'] . "' alt='IMG'>";
+        ?>
     </div>
     <div class="botoes">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;"href="TJP.php">Voltar</a></button>

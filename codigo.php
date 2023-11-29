@@ -118,6 +118,12 @@ session_start();
      $resultado = mysqli_query(conectar(), $sql);
      return $dados = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
  }
+ function selecionarHistoria($a)
+ {
+     $sql = "SELECT * FROM historia WHERE id='$a';";
+     $resultado = mysqli_query(conectar(), $sql);
+     return $dados = mysqli_fetch_assoc($resultado);
+ }
  function selecionarIdHab($a)
  {
      $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
@@ -232,8 +238,8 @@ session_start();
  }
  function criarPP(){
   $_SESSION['HPINI'] = 200;
-  $_SESSION['ATQINI'] = 30;
-  $_SESSION['DEFINI'] = 30;
+  $_SESSION['ATQINI'] = 20;
+  $_SESSION['DEFINI'] = 25;
  }
  function criarAP(){
   $_SESSION['HPINI'] = 300;
@@ -402,7 +408,7 @@ session_start();
   elseif ($a == "CURA"){
        $_SESSION['contador'] = '2'; 
        $_SESSION['descAcao'] = 'Pedregulho Peludo se abaixa e fica em posição defensiva enquanto come algumas gramas para recuperar seu vigor.';
-       $_SESSION['HPINI'] = CURA($_SESSION['HPINI'], 30);
+       $_SESSION['HPINI'] = CURA($_SESSION['HPINI'], 10);
   } 
   elseif ($a == "ESP"){
        $_SESSION['contador'] = '3'; 
@@ -526,6 +532,8 @@ session_start();
       $_SESSION['DEF'] = 10;
  } elseif($_SESSION['contadorJog'] == 4){
       $_SESSION['DEF'] = 10;
+ } elseif($_SESSION['contadorJog'] == 5){
+      $_SESSION['DEFINI'] = 0;
  } elseif($_SESSION['contadorJog'] == 6){
       echo "a fazer"; 
  }

@@ -1,5 +1,6 @@
 <?php
 include_once('codigo.php');
+$_SESSION['nivel'] = 4;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,10 +21,30 @@ include_once('codigo.php');
       <h1><?php echo $_SESSION['nome']; ?></h1>
       <h2><?php echo $_SESSION['email']; ?></h2>
       <p>Nível: <?php echo $_SESSION['nivel']; ?>/4 </p>
-        <a style="text-decoration: none;color: inherit;"href="#.php">Pampa</a><br>
-        <a style="text-decoration: none;color: inherit;"href="#.php">Mata Atlântica</a><br>
-        <a style="text-decoration: none;color: inherit;"href="#.php">Caatinga</a><br>
-        <a style="text-decoration: none;color: inherit;"href="#.php">Amazônia</a>
+        <?php switch ($_SESSION['nivel']) {
+    case 0:
+        echo "Você ainda não possui nível.";
+        break;
+    case 1:
+        echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
+        break;
+    case 2:
+        echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='MAP.php'>Mata Atlântica</a><br>";
+        break;
+    case 3:
+        echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='MAP.php'>Mata Atlântica</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='CP.php'>Caatinga</a><br>";
+        break;
+    case 4:
+      echo "<a style='text-decoration: none;color: inherit;'href='PT.php'>Pampa</a><br>";
+      echo "<a style='text-decoration: none;color: inherit;'href='MAP.php'>Mata Atlântica</a><br>";
+      echo "<a style='text-decoration: none;color: inherit;'href='CP.php'>Caatinga</a><br>";
+        echo "<a style='text-decoration: none;color: inherit;'href='AMP.php'>Amazônia</a><br>";
+        break;
+}
+        ?>
     </div>
     <div class="diarioExpD scroll-area content">
      <?php habilidadesJogador($_SESSION['idJog']); ?>

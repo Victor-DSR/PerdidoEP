@@ -148,7 +148,7 @@ session_start();
   foreach ($ids as $id) {
     foreach ($habs as $habilidade) {
       if ($id['id_hab'] == $habilidade['id']){
-        echo $habilidade['nome'] . ": <br>" . $habilidade['descricaoD'] . "<br>";
+        echo "<img src='ICONS/". $habilidade['gif'] . "' style='width: 10%;'>" . $habilidade['nome'] . ": <br>" . $habilidade['descricaoD'] . "<br>";
       }
     }
   }

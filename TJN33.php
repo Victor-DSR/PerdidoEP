@@ -24,10 +24,9 @@ $PI = selecionarPadrao($_SESSION['Inimigo']);
   <div class="container">
   <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p>Finalmente eu consegui o derrotar, o “Atlas Pintado” era muito poderoso e sua capacidade de se espreitar e me atacar nos pontos mais vulneráveis tornaram esta luta muito mais difícil do que eu poderia imaginar… mas eu o derrotei! agora, com seus poderes, seguirei em diante para encontrar ele…</p>
      </div>
      <div class="diarioExpD scroll-area content">
-     <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
      <form action="TJN41.php" method="POST">
             <div class="field">
                 Escolha uma dentre estas três habilidades:

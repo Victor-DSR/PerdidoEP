@@ -24,10 +24,9 @@ $PI = selecionarPadrao($_SESSION['Inimigo']);
   <div class="container">
   <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p>Esta luta foi muito mais difícil, mas eu sinto o poder da terra sendo sugado para o interior do meu corpo, fico me perguntando se serei capaz de enfrentar os próximos… melhor eu continuar minha viagem, eu não tenho escolha, eu preciso vencer!</p>
      </div>
      <div class="diarioExpD scroll-area content">
-     <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
      <form action="TJN31.php" method="POST">
             <div class="field">
                 Escolha uma dentre estas três habilidades:

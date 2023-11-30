@@ -34,13 +34,7 @@ criarPP();
         <p><?php inserirHab($_SESSION['idJog'], $id_hab); ?></p>
      </div>
      <div class="diarioExpD scroll-area content">
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
+     Depois de derrotar o 'Quero Tempestades' e absorver parte de seus poderes, sinto-me mais forte. Andei durante dias e semanas sem parar em busca do meu próximo inimigo. Talvez agora, que tenho os poderes do Espírito do Vento, eu possa derrotá-lo. O guardião destas terras úmidas é o 'Pedregulho Peludo', um tatu gigantesco com os poderes do Espírito da Terra. Se eu derrotá-lo e conseguir absorver seus poderes, serei capaz de enfrentar os próximos guardiões que guardam ainda mais força em seu interior.
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN22.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>

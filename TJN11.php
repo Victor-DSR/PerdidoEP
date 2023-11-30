@@ -36,16 +36,12 @@ criarPersonagem();
   <div class="container">
      <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p>TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO</p>
+        <p>Acabei de acordar. Vejo minha casa, minha terra, mas... o que é esse livro estranho? E por que tudo parece tão familiar? Minha cabeça dói.</p>
      </div>
      <div class="diarioExpD scroll-area content">
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
+        <p>Eu morri há algumas horas… de novo? Desde o meu encontro com aquele poderoso espírito, sinto que algo despertou dentro de mim. Sinto que não é a primeira vez que vejo este livro, que escrevo nele! Tornei-me uma espécie de espírito que viaja entre o tempo... Que bom, agora posso deter os guardiões! Na minha vida passada, ou em minhas vidas, os guardiões das terras — animais de poder inigualável com poderosos espíritos guerreiros dentro de si — foram corrompidos por algum estranho e poderoso ser maligno e antigo. Devo enfrentá-los e impedi-los de destruir minha terra e meus amigos mais uma vez.
+	O primeiro deles está próximo, o espírito dos ventos, Quero Tempestades, um pássaro que consegue controlar os céus e os ventos ao seu favor.
+        </p>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN12.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>

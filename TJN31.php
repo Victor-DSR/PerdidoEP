@@ -34,13 +34,7 @@ criarAP();
         <p><?php inserirHab($_SESSION['idJog'], $id_hab); ?></p>
      </div>
      <div class="diarioExpD scroll-area content">
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
-      TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO TEXTO
+      <p>Meu Deus, eu não aguento mais andar. Parece que já se passaram semanas desde que enfrentei o último guardião. Sair daquela floresta demorou muito tempo, mas eu daria qualquer coisa para voltar para ela. O clima aqui é muito mais difícil, seco e quente. Mal consigo encontrar água. Me pergunto como o espírito guia consegue viver por aqui. Isso não importa; preciso achá-lo e vencê-lo se quiser encontrar o caminho certo para as terras ancestrais. Com seus poderes, poderei me guiar dentro daquele gigantesco labirinto natural e achar o culpado por trás de tudo isso.</p>
      </div>
   <div class="botoesE">
       <button class="botao-imagem"><a style="text-decoration: none;color: inherit;" href="TJN32.php?id=<?php echo $H1[1]?>"><?php echo $H1[0] ?></a></button>

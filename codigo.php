@@ -329,19 +329,11 @@ session_start();
     return $a;
  }
  function DBUF($a, $b){
- if($b == 'ador'){
       if($a == 'Dispersar Divergente'){
       $_SESSION['ATQINI'] = 0;
       } elseif($a == 'Nuvens Aceleradas'){
       $_SESSION['DEFINI'] = 0;
      } 
- } elseif($b == 'Inimigo'){
-      if($a == 'Dispersar Divergente'){
-      $_SESSION['ATQ'] = 0;
-      } elseif($a == 'Nuvens Aceleradas'){
-      $_SESSION['DEF'] = 0;
-     }
- }
  }
  function ESP($a){
   if($a == "Pampa"){
@@ -469,7 +461,7 @@ session_start();
  function manterStatusQT(){
   if($_SESSION['contador'] == 1){
       $_SESSION['ESPINI'] = 50; 
-      $_SESSION['DEFINI'] = 20;
+      $_SESSION['DEFINI'] = 10;
  } elseif($_SESSION['contador'] == 2){
       $_SESSION['ATQINI'] = 20; 
       $_SESSION['ESPINI'] = 50; 
@@ -479,8 +471,6 @@ session_start();
  }
  function manterStatusPP(){
   if($_SESSION['contador'] == 1){
-      $_SESSION['ATQINI'] = 30;
-      $_SESSION['DEFINI'] = 30;
     } elseif($_SESSION['contador'] == 2){
       $_SESSION['ATQINI'] = 30;
       $_SESSION['DEFINI'] = 30;
@@ -532,8 +522,6 @@ session_start();
       $_SESSION['DEF'] = 10;
  } elseif($_SESSION['contadorJog'] == 4){
       $_SESSION['DEF'] = 10;
- } elseif($_SESSION['contadorJog'] == 5){
-      $_SESSION['DEFINI'] = 0;
  } elseif($_SESSION['contadorJog'] == 6){
       echo "a fazer"; 
  }
@@ -571,121 +559,121 @@ session_start();
   function padraoAtaquePP($a){
     if($_SESSION['Padrao'] == 'p1'){
          $_SESSION['Padrao'] = 'p2';
-         atividadeTurnoPP($a['p1'], "Inimigo"); 
+         atividadeTurnoPP($a['p1']); 
         } elseif($_SESSION['Padrao'] == 'p2'){
          $_SESSION['Padrao'] = 'p3';
-         atividadeTurnoPP($a['p2'], "Inimigo"); 
+         atividadeTurnoPP($a['p2']); 
         } elseif($_SESSION['Padrao'] == 'p3'){
          $_SESSION['Padrao'] = 'p4';
-         atividadeTurnoPP($a['p3'], "Inimigo"); 
+         atividadeTurnoPP($a['p3']); 
         } elseif($_SESSION['Padrao'] == 'p4'){
          $_SESSION['Padrao'] = 'p5';
-         atividadeTurnoPP($a['p4'], "Inimigo"); 
+         atividadeTurnoPP($a['p4']); 
         } elseif($_SESSION['Padrao'] == 'p5'){
          $_SESSION['Padrao'] = 'p6';
-         atividadeTurnoPP($a['p5'], "Inimigo"); 
+         atividadeTurnoPP($a['p5']); 
         } elseif($_SESSION['Padrao'] == 'p6'){
          $_SESSION['Padrao'] = 'p7';
-         atividadeTurnoPP($a['p6'], "Inimigo"); 
+         atividadeTurnoPP($a['p6']); 
         } elseif($_SESSION['Padrao'] == 'p7'){
          $_SESSION['Padrao'] = 'p8';
-         atividadeTurnoPP($a['p7'], "Inimigo"); 
+         atividadeTurnoPP($a['p7']); 
         } elseif($_SESSION['Padrao'] == 'p8'){
          $_SESSION['Padrao'] = 'p9';
-         atividadeTurnoPP($a['p8'], "Inimigo"); 
+         atividadeTurnoPP($a['p8']); 
         } elseif($_SESSION['Padrao'] == 'p9'){
          $_SESSION['Padrao'] = 'p1';
-         atividadeTurnoPP($a['p9'], "Inimigo"); 
+         atividadeTurnoPP($a['p9']); 
         }
   }
   function padraoAtaqueAP($a){
     if($_SESSION['Padrao'] == 'p1'){
         $_SESSION['Padrao'] = 'p2';
-        atividadeTurnoAP($a['p1'], "Inimigo"); 
+        atividadeTurnoAP($a['p1']); 
         } elseif($_SESSION['Padrao'] == 'p2'){
         $_SESSION['Padrao'] = 'p3';
-        atividadeTurnoAP($a['p2'], "Inimigo"); 
+        atividadeTurnoAP($a['p2']); 
         } elseif($_SESSION['Padrao'] == 'p3'){
         $_SESSION['Padrao'] = 'p4';
-        atividadeTurnoAP($a['p3'], "Inimigo"); 
+        atividadeTurnoAP($a['p3']); 
         } elseif($_SESSION['Padrao'] == 'p4'){
         $_SESSION['Padrao'] = 'p5';
-        atividadeTurnoAP($a['p4'], "Inimigo"); 
+        atividadeTurnoAP($a['p4']); 
         } elseif($_SESSION['Padrao'] == 'p5'){
         $_SESSION['Padrao'] = 'p6';
-        atividadeTurnoAP($a['p5'], "Inimigo"); 
+        atividadeTurnoAP($a['p5']); 
         } elseif($_SESSION['Padrao'] == 'p6'){
         $_SESSION['Padrao'] = 'p7';
-        atividadeTurnoAP($a['p6'], "Inimigo"); 
+        atividadeTurnoAP($a['p6']); 
         } elseif($_SESSION['Padrao'] == 'p7'){
         $_SESSION['Padrao'] = 'p8';
-        atividadeTurnoAP($a['p7'], "Inimigo"); 
+        atividadeTurnoAP($a['p7']); 
         } elseif($_SESSION['Padrao'] == 'p8'){
         $_SESSION['Padrao'] = 'p9';
-        atividadeTurnoAP($a['p8'], "Inimigo"); 
+        atividadeTurnoAP($a['p8']); 
         } elseif($_SESSION['Padrao'] == 'p9'){
         $_SESSION['Padrao'] = 'p1';
-        atividadeTurnoAP($a['p9'], "Inimigo"); 
+        atividadeTurnoAP($a['p9']); 
         }
     }
     function padraoAtaqueRA($a){
       if($_SESSION['Padrao'] == 'p1'){
           $_SESSION['Padrao'] = 'p2';
-          atividadeTurnoRA($a['p1'], "Inimigo"); 
+          atividadeTurnoRA($a['p1']); 
           } elseif($_SESSION['Padrao'] == 'p2'){
           $_SESSION['Padrao'] = 'p3';
-          atividadeTurnoRA($a['p2'], "Inimigo"); 
+          atividadeTurnoRA($a['p2']); 
           } elseif($_SESSION['Padrao'] == 'p3'){
           $_SESSION['Padrao'] = 'p4';
-          atividadeTurnoRA($a['p3'], "Inimigo"); 
+          atividadeTurnoRA($a['p3']); 
           } elseif($_SESSION['Padrao'] == 'p4'){
           $_SESSION['Padrao'] = 'p5';
-          atividadeTurnoRA($a['p4'], "Inimigo"); 
+          atividadeTurnoRA($a['p4']); 
           } elseif($_SESSION['Padrao'] == 'p5'){
           $_SESSION['Padrao'] = 'p6';
-          atividadeTurnoRA($a['p5'], "Inimigo"); 
+          atividadeTurnoRA($a['p5']); 
           } elseif($_SESSION['Padrao'] == 'p6'){
           $_SESSION['Padrao'] = 'p7';
-          atividadeTurnoRA($a['p6'], "Inimigo"); 
+          atividadeTurnoRA($a['p6']); 
           } elseif($_SESSION['Padrao'] == 'p7'){
           $_SESSION['Padrao'] = 'p8';
-          atividadeTurnoRA($a['p7'], "Inimigo"); 
+          atividadeTurnoRA($a['p7']); 
           } elseif($_SESSION['Padrao'] == 'p8'){
           $_SESSION['Padrao'] = 'p9';
-          atividadeTurnoRA($a['p8'], "Inimigo"); 
+          atividadeTurnoRA($a['p8']); 
           } elseif($_SESSION['Padrao'] == 'p9'){
           $_SESSION['Padrao'] = 'p1';
-          atividadeTurnoRA($a['p9'], "Inimigo"); 
+          atividadeTurnoRA($a['p9']); 
           }
       }
       function padraoAtaqueRAU($a){
         if($_SESSION['Padrao'] == 'p1'){
             $_SESSION['Padrao'] = 'p2';
-            atividadeTurnoRAU($a['p1'], "Inimigo"); 
+            atividadeTurnoRAU($a['p1']); 
             } elseif($_SESSION['Padrao'] == 'p2'){
             $_SESSION['Padrao'] = 'p3';
-            atividadeTurnoRAU($a['p2'], "Inimigo"); 
+            atividadeTurnoRAU($a['p2']); 
             } elseif($_SESSION['Padrao'] == 'p3'){
             $_SESSION['Padrao'] = 'p4';
-            atividadeTurnoRAU($a['p3'], "Inimigo"); 
+            atividadeTurnoRAU($a['p3']); 
             } elseif($_SESSION['Padrao'] == 'p4'){
             $_SESSION['Padrao'] = 'p5';
-            atividadeTurnoRAU($a['p4'], "Inimigo"); 
+            atividadeTurnoRAU($a['p4']); 
             } elseif($_SESSION['Padrao'] == 'p5'){
             $_SESSION['Padrao'] = 'p6';
-            atividadeTurnoRAU($a['p5'], "Inimigo"); 
+            atividadeTurnoRAU($a['p5']); 
             } elseif($_SESSION['Padrao'] == 'p6'){
             $_SESSION['Padrao'] = 'p7';
-            atividadeTurnoRAU($a['p6'], "Inimigo"); 
+            atividadeTurnoRAU($a['p6']); 
             } elseif($_SESSION['Padrao'] == 'p7'){
             $_SESSION['Padrao'] = 'p8';
-            atividadeTurnoRAU($a['p7'], "Inimigo"); 
+            atividadeTurnoRAU($a['p7']); 
             } elseif($_SESSION['Padrao'] == 'p8'){
             $_SESSION['Padrao'] = 'p9';
-            atividadeTurnoRAU($a['p8'], "Inimigo"); 
+            atividadeTurnoRAU($a['p8']); 
             } elseif($_SESSION['Padrao'] == 'p9'){
             $_SESSION['Padrao'] = 'p1';
-            atividadeTurnoRAU($a['p9'], "Inimigo"); 
+            atividadeTurnoRAU($a['p9']); 
             }
         }
 }

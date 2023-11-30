@@ -14,14 +14,14 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
         } elseif ($_SESSION['HP'] <= 0){
           echo '
           <script>
-          alert("Você sucumbiu aos céus turbulentos do Quero Tempestades!");
+          alert("Você sucumbiu aos poderes absolutos do Roedor Ancião!");
           window.location.href = "TM.php";
                </script>';
         }
     }
 $INFO = selecionarHabilidade($id);
-manterStatusPersonagem();
 manterStatusRAU();
+manterStatusPersonagem();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

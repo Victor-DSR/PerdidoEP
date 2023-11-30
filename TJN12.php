@@ -20,8 +20,8 @@ padraoAtaqueQT($PI);
     }
 } 
 $INFO = selecionarHabilidade($id);
-manterStatusPersonagem();
 manterStatusQT();
+manterStatusPersonagem();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

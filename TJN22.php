@@ -20,8 +20,8 @@ if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
       }
   }
 $INFO = selecionarHabilidade($id);
-manterStatusPersonagem();
 manterStatusPP();
+manterStatusPersonagem();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

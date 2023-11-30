@@ -233,7 +233,6 @@ session_start();
  function criarQT(){
   $_SESSION['HPINI'] = 200;
   $_SESSION['ATQINI'] = 20;
-  $_SESSION['ESPINI'] = 50;
   $_SESSION['DEFINI'] = 10;
  }
  function criarPP(){
@@ -243,18 +242,18 @@ session_start();
  }
  function criarAP(){
   $_SESSION['HPINI'] = 300;
-  $_SESSION['ATQINI'] = 40;
-  $_SESSION['DEFINI'] = 10;
+  $_SESSION['ATQINI'] = 30;
+  $_SESSION['DEFINI'] = 15;
  }
  function criarRA(){
-  $_SESSION['HPINI'] = 400;
-  $_SESSION['ATQINI'] = 50;
-  $_SESSION['DEFINI'] = 10;
+  $_SESSION['HPINI'] = 300;
+  $_SESSION['ATQINI'] = 30;
+  $_SESSION['DEFINI'] = 15;
  }
  function criarRAU(){
-  $_SESSION['HPINI'] = 400;
-  $_SESSION['ATQINI'] = 50;
-  $_SESSION['DEFINI'] = 10;
+  $_SESSION['HPINI'] = 200;
+  $_SESSION['ATQINI'] = 40;
+  $_SESSION['DEFINI'] = 20;
  }
 }
 /*Habilidades Jogador e Inimigos*/{
@@ -333,7 +332,7 @@ session_start();
       $_SESSION['ATQINI'] = 0;
       } elseif($a == 'Nuvens Aceleradas'){
       $_SESSION['DEFINI'] = 0;
-     } 
+      } 
  }
  function ESP($a){
   if($a == "Pampa"){
@@ -345,6 +344,18 @@ session_start();
   } elseif($a == "Amazonia"){;
     echo $a;
   }
+ }
+ function Combo($a, $b){
+   if($a['id'] == 1){
+     $_SESSION['contCombo'] = 1;
+   } elseif($a['id'] == 2 and $_SESSION['contCombo'] == 1){
+     $_SESSION['contCombo'] = 2;
+   } elseif($a['id'] == 0 and $_SESSION['contCombo'] == 2){
+     $_SESSION['contCombo'] = 0;
+    echo "<button class='botao-imagem'><a style='text-decoration: none;color: inherit;' href='$b.php?id=12'>Mega Ataque</a></button>";
+   } elseif($a['id'] == 2 and $_SESSION['contCombo'] != 1){
+     $_SESSION['contCombo'] = 0;
+   }
  }
 }
 /* Turnos e Status*/{
@@ -388,7 +399,7 @@ session_start();
   elseif ($a == "DBUF"){
        $_SESSION['contador'] = '3'; 
        $_SESSION['descAcao'] = 'Quero Tempestades invoca um poderoso tufão ao bater suas asas para lhe desestabilizar e o deixar mais vulneravel a seus ataques.';
-       DBUF('Nuvens Aceleradas', $b);
+       //DBUF('Nuvens Aceleradas', $b);
   }
  }
  function atividadeTurnoPP($a){
@@ -459,12 +470,10 @@ session_start();
   }
  }
  function manterStatusQT(){
-  if($_SESSION['contador'] == 1){
-      $_SESSION['ESPINI'] = 50; 
+  if($_SESSION['contador'] == 1){ 
       $_SESSION['DEFINI'] = 10;
  } elseif($_SESSION['contador'] == 2){
-      $_SESSION['ATQINI'] = 20; 
-      $_SESSION['ESPINI'] = 50; 
+      $_SESSION['ATQINI'] = 20;  
  } elseif($_SESSION['contador'] == 3){
      $_SESSION['DEF'] = 0; 
  } 
@@ -472,43 +481,43 @@ session_start();
  function manterStatusPP(){
   if($_SESSION['contador'] == 1){
     } elseif($_SESSION['contador'] == 2){
-      $_SESSION['ATQINI'] = 30;
-      $_SESSION['DEFINI'] = 30;
+      $_SESSION['ATQINI'] = 20;
+      $_SESSION['DEFINI'] = 25;
     } elseif($_SESSION['contador'] == 3){
       $_SESSION['ATQ'] = 0; 
     } 
  }
  function manterStatusAP(){
   if($_SESSION['contador'] == 1){
-      $_SESSION['ATQINI'] = 40;
-      $_SESSION['DEFINI'] = 10;
+      $_SESSION['ATQINI'] = 30;
+      $_SESSION['DEFINI'] = 15;
     } elseif($_SESSION['contador'] == 2){
-      $_SESSION['ATQINI'] = 40;
-      $_SESSION['DEFINI'] = 10;
+      $_SESSION['ATQINI'] = 30;
+      $_SESSION['DEFINI'] = 15;
     } elseif($_SESSION['contador'] == 3){
-      $_SESSION['DEFINI'] = 10; 
+      $_SESSION['DEFINI'] = 15; 
     } 
  }
  function manterStatusRA(){
   if($_SESSION['contador'] == 1){
-      $_SESSION['ATQINI'] = 40;
-      $_SESSION['DEFINI'] = 10;
+      $_SESSION['ATQINI'] = 30;
+      $_SESSION['DEFINI'] = 15;
     } elseif($_SESSION['contador'] == 2){
-      $_SESSION['ATQINI'] = 40;
-      $_SESSION['DEFINI'] = 10;
+      $_SESSION['ATQINI'] = 30;
+      $_SESSION['DEFINI'] = 15;
     } elseif($_SESSION['contador'] == 3){
-      $_SESSION['DEFINI'] = 10; 
+      $_SESSION['DEFINI'] = 15; 
     } 
  }
  function manterStatusRAU(){
   if($_SESSION['contador'] == 1){
       $_SESSION['ATQINI'] = 40;
-      $_SESSION['DEFINI'] = 10;
+      $_SESSION['DEFINI'] = 20;
     } elseif($_SESSION['contador'] == 2){
       $_SESSION['ATQINI'] = 40;
-      $_SESSION['DEFINI'] = 10;
+      $_SESSION['DEFINI'] = 20;
     } elseif($_SESSION['contador'] == 3){
-      $_SESSION['DEFINI'] = 10; 
+      $_SESSION['DEFINI'] = 20; 
     } 
  }
  function manterStatusPersonagem(){

@@ -476,34 +476,34 @@ session_start();
  function atividadeTurnoRA($a){
   if ($a == "ATQ"){
        $_SESSION['contador'] = '1'; 
-       $_SESSION['descAcao'] = 'Roedor Ancião Ataca.';
+       $_SESSION['descAcao'] = 'Roedor Ancião se levata e então are sua boca lhe dando uma dolorosa mordida.';
        $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
   } 
   elseif ($a == "CURA"){
        $_SESSION['contador'] = '2'; 
-       $_SESSION['descAcao'] = 'Roedor Ancião se Cura.';
+       $_SESSION['descAcao'] = 'Roedor Ancião se acoca e então começa a tremer, suas feridas lentamente se fecham.';
        $_SESSION['HPINI'] = CURA($_SESSION['HPINI'], 40);
   } 
   elseif ($a == "DEF"){
     $_SESSION['contador'] = '3'; 
-    $_SESSION['descAcao'] = 'Roedor Ancião se Defende.';
+    $_SESSION['descAcao'] = 'Roedor Ancião começa a se mexer violentamente fazendo com que sua defesa cresça.';
     $_SESSION['DEFINI'] = DEF($_SESSION['DEFINI'], 20);
   } 
  }
  function atividadeTurnoRAU($a){
   if ($a == "ATQ"){
        $_SESSION['contador'] = '1'; 
-       $_SESSION['descAcao'] = 'Roedor Ancião Bravo Ataca.';
+       $_SESSION['descAcao'] = 'Roedor Ancião Possuido salta em sua direção lhe dando um poderoso ataque.';
        $_SESSION['HP'] = ATQ($_SESSION['ATQINI'], $_SESSION['DEF'], $_SESSION['HP']);
   } 
   elseif ($a == "CURA"){
        $_SESSION['contador'] = '2'; 
-       $_SESSION['descAcao'] = 'Roedor Ancião Bravo se Cura.';
+       $_SESSION['descAcao'] = 'Roedor Ancião Possuido levanta em todo seu esplendor e absorve a vida a sua volta, se curando no processo.';
        $_SESSION['HPINI'] = CURA($_SESSION['HPINI'], 40);
   } 
   elseif ($a == "ATQCRIT"){
        $_SESSION['contador'] = '3'; 
-       $_SESSION['descAcao'] = 'Roedor Ancião Bravo fica ainda mais Bravo.';
+       $_SESSION['descAcao'] = 'Roedor Ancião Possuido entra em frenesi e lhe ataca em fúria.';
        $_SESSION['ATQINI']= BUF($_SESSION['ATQINI'], 2);
   }
  }

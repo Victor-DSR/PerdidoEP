@@ -41,7 +41,7 @@ $INFO = selecionarHabilidade($id);
         ?></p>
         <div><?php  echo $INFO['descricao']; ?></div>
      </div>
-     <div class="diarioExpD" style="width: 35%; height: auto; top: 13%; left: 70%;">
+     <div class="diarioExpD" style="width: 30%; height: auto; top: 15%; left: 70%;">
         <img src="IMG/RAU.gif" alt="Gif de Teste">
         <p><?php 
         echo "Vida: " . $_SESSION['HPINI'] . "<br>";

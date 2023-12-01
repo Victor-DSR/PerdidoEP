@@ -32,7 +32,7 @@ criarRA();
   <div class="container">
   <div class="diarioExp" style="width: 30%; height: auto; top: 20%; left: 35%;">
         <img src="IMG/TGif.gif" alt="Gif de Teste">
-        <p><?php inserirHab($_SESSION['idJog'], $_POST['Hab']); ?></p>
+        <p><?php inserirHab($_SESSION['idJog'], $id_hab); ?></p>
      </div>
      <div class="diarioExpD scroll-area content">
      <p>"Com os poderes do guia, vou ser capaz de andar tranquilamente por aqui", eu disse. "Com essas habilidades, poderei encontrar o Espírito Maligno", eu disse. Maldição! Estou andando há dias e não consigo encontrá-lo por nada. Passei por algumas tribos devastadas pelos seus poderes, e ainda que eu persiga seu rastro, parece que ele sempre foge no último instante. Mais alguns dias se passaram desde que escrevi a última parte, e acho que descobri uma forma de encontrar o Espírito. Alguns irmãos que encontrei durante minhas buscas me contaram sobre um poderoso Guardião chamado de "Roedor Ancião". Ele é um protetor inigualável. Com sua ajuda, poderei não só achar o Espírito Maligno como também derrotá-lo de uma vez por todas.</p>

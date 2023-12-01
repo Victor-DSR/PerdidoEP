@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
-$_SESSION['Bio'] = 'Pampa';
+$_SESSION['contCombo'] = 0;
+$_SESSION['Bio'] = '1';
 $_SESSION['Inimigo'] = '1';
 $_SESSION['Padrao'] = 'p1';
 criarQT();

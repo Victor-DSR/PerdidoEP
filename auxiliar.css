@@ -26,6 +26,15 @@ body {
         position: relative;
  }
 
+.container-morte {
+    width: 80%;
+    height: 78%;
+    margin: auto;
+    background: url('IMG/TDM.png') center/cover no-repeat;
+    display: flex;
+    position: relative;
+}
+
 .container img {
     width: 70%;
     height: auto;
@@ -239,6 +248,18 @@ textarea{
     height: 55px;
     cursor: pointer;
     font-family: Immortal;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.botao-imagem-combo {
+    background: url('IMG/BMC.png') center/cover no-repeat; 
+    border: none;
+    width: 150px; 
+    height: 55px;
+    cursor: pointer;
+    font-family: Immortal;
+    color: white;
     margin-bottom: 10px;
     display: inline-block;
 }

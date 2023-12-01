@@ -89,6 +89,25 @@ session_start();
    } 
  }
 }
+/*Tela de Morte*/{
+ function telaMorteQT(){
+   echo "<!DOCTYPE html>
+   <html lang='pt-br'>
+   <head>
+   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+       <link rel='stylesheet' type='text/css' href='auxiliar.css'>
+     <title>Perdido em Pindorama</title>
+   </head>
+   <body style='background-image: url(IMG/FPM.png);'>
+     <div class='container-morte'>
+     <div class='botoesE'>
+     <button class='botao-imagem-combo'><a style='text-decoration: none;color: inherit;' href='TM.php'>Voltar ao Menu</a></button>
+     </div>
+   </body>
+   </html>";
+  }
+}
 /* Verificação e Seleção do Banco de Dados*/{
  function verificarHab ($a){
          $sql = "SELECT * FROM jog_hab WHERE id_jog='$a'";
@@ -285,25 +304,11 @@ session_start();
        $_SESSION['ATQINI'] = 0;
        } elseif($a == 'Nuvens Aceleradas'){
        $_SESSION['DEFINI'] = 0;
-      } 
-  } elseif($b == 'Inimigo'){
-       if($a == 'Dispersar Divergente'){
-       $_SESSION['ATQ'] = 0;
-       } elseif($a == 'Nuvens Aceleradas'){
-       $_SESSION['DEF'] = 0;
-      }
+       } elseif($a == 'Ventos Congelates'){
+       $_SESSION['ATQINI'] = 0;
+       $_SESSION['DEFINI'] = 0;
+       }
   }
- }
- function ESPJOG($a){
-   if($a == "Pampa"){
-     echo $a; 
-   } elseif($a == "Mata Atlantica"){
-     echo $a;
-   } elseif($a == "Caatinga"){
-     echo $a;
-   } elseif($a == "Amazonia"){;
-     echo $a;
-   }
  }
  function ATQ($a, $b, $c){
   $a += $_SESSION['ATQ'];
@@ -334,17 +339,6 @@ session_start();
       $_SESSION['DEFINI'] = 0;
       } 
  }
- function ESP($a){
-  if($a == "Pampa"){
-    echo $a; 
-  } elseif($a == "Mata Atlantica"){
-    echo $a;
-  } elseif($a == "Caatinga"){
-    echo $a;
-  } elseif($a == "Amazonia"){;
-    echo $a;
-  }
- }
  function Combo($a, $b){
    if($a['id'] == 1){
      $_SESSION['contCombo'] = 1;
@@ -352,14 +346,50 @@ session_start();
      $_SESSION['contCombo'] = 2;
    } elseif($a['id'] == 0 and $_SESSION['contCombo'] == 2){
      $_SESSION['contCombo'] = 0;
-    echo "<button class='botao-imagem'><a style='text-decoration: none;color: inherit;' href='$b.php?id=12'>Mega Ataque</a></button>";
+    echo "<button class='botao-imagem'><a style='text-decoration: none;color: inherit;' href='$b.php?id=12'>Golpe Duplo</a></button>";
    } elseif($a['id'] == 2 and $_SESSION['contCombo'] != 1){
      $_SESSION['contCombo'] = 0;
+   }
+   if($a['id'] == 3){
+    $_SESSION['contCombo'] = 1;
+   } elseif($a['id'] == 10 and $_SESSION['contCombo'] == 1){
+    $_SESSION['contCombo'] = 2;
+   } elseif($a['id'] == 11 and $_SESSION['contCombo'] == 2){
+    $_SESSION['contCombo'] = 0;
+   echo "<button class='botao-imagem-combo'><a style='text-decoration: none;color: inherit;' href='$b.php?id=13'>Fúria dos Ventos</a></button>";
+   } elseif($a['id'] == 10 and $_SESSION['contCombo'] != 1){
+    $_SESSION['contCombo'] = 0;
+   }
+   if($a['id'] == 8){
+    $_SESSION['contCombo'] = 1;
+   } elseif($a['id'] == 7 and $_SESSION['contCombo'] == 1){
+    $_SESSION['contCombo'] = 2;
+   } elseif($a['id'] == 9 and $_SESSION['contCombo'] == 2){
+    $_SESSION['contCombo'] = 0;
+   echo "<button class='botao-imagem-combo'><a style='text-decoration: none;color: inherit;' href='$b.php?id=14'>Ventos Congelantes</a></button>";
+   } elseif($a['id'] == 7 and $_SESSION['contCombo'] != 1){
+    $_SESSION['contCombo'] = 0;
+   }
+   if($a['id'] == 5){
+    $_SESSION['contCombo'] = 1;
+   } elseif($a['id'] == 3 and $_SESSION['contCombo'] == 1){
+    $_SESSION['contCombo'] = 2;
+   } elseif($a['id'] == 4 and $_SESSION['contCombo'] == 2){
+    $_SESSION['contCombo'] = 0;
+    echo "<button class='botao-imagem-combo'><a style='text-decoration: none;color: inherit;' href='$b.php?id=15'>Terremoto Estrondoso</a></button>";
+   } elseif($a['id'] == 4 and $_SESSION['contCombo'] != 1){
+    $_SESSION['contCombo'] = 2;
+   }
+   if($a['id'] == 8){
+    $_SESSION['contCombo'] = 1;
+   } elseif($a['id'] == 4 and $_SESSION['contCombo'] == 1){
+    $_SESSION['contCombo'] = 0;
+    echo "<button class='botao-imagem-combo'><a style='text-decoration: none;color: inherit;' href='$b.php?id=16'>Magnitude Nove</a></button>";
    }
  }
 }
 /* Turnos e Status*/{
-  function atividadeTurnoJogador($a, $b){
+  function atividadeTurnoJogador($a, $b, $c){
     if ($a['tipo'] == "ATQ"){
          $_SESSION['contadorJog'] = 1;
          $_SESSION['HPINI'] = ATQJOG($a['efeito'], $_SESSION['DEFINI'], $_SESSION['HPINI']);
@@ -382,7 +412,15 @@ session_start();
     }
     elseif ($a['tipo'] == "ESP"){
          $_SESSION['contadorJog'] = 6;
-         echo ESPJOG('Mata Atlantica');
+         if($c == 1){
+          $_SESSION['HP'] = $_SESSION['HP'] + 30;
+        } elseif($c == 2){
+          $_SESSION['HPINI'] = $_SESSION['HPINI'] - 30;
+        } elseif($c == 3){
+         $_SESSION['HPINI'] = $_SESSION['HPINI'] - 30;
+        } elseif($c == 4){;
+         $_SESSION['HP'] = $_SESSION['HP'] + 30;
+        }
     }
   }
  function atividadeTurnoQT($a, $b){
@@ -399,7 +437,7 @@ session_start();
   elseif ($a == "DBUF"){
        $_SESSION['contador'] = '3'; 
        $_SESSION['descAcao'] = 'Quero Tempestades invoca um poderoso tufão ao bater suas asas para lhe desestabilizar e o deixar mais vulneravel a seus ataques.';
-       //DBUF('Nuvens Aceleradas', $b);
+       DBUF('Nuvens Aceleradas', $b);
   }
  }
  function atividadeTurnoPP($a){
@@ -531,8 +569,6 @@ session_start();
       $_SESSION['DEF'] = 10;
  } elseif($_SESSION['contadorJog'] == 4){
       $_SESSION['DEF'] = 10;
- } elseif($_SESSION['contadorJog'] == 6){
-      echo "a fazer"; 
  }
  }
  function padraoAtaqueQT($a){

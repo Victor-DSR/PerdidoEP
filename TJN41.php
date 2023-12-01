@@ -8,7 +8,8 @@ if(isset($_POST['Hab'])){
 $H1 = explode('+',$_SESSION['H1']);
 $H2 = explode('+',$_SESSION['H2']);
 $H3 = explode('+',$_SESSION['H3']);
-$_SESSION['Bio'] = 'Amazonia';
+$_SESSION['contCombo'] = 0;
+$_SESSION['Bio'] = '4';
 $_SESSION['Inimigo'] = '4';
 $_SESSION['Padrao'] = 'p1';
 $_SESSION['HP'] += 50;

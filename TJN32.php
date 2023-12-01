@@ -7,21 +7,15 @@ $H3 = explode('+',$_SESSION['H3']);
 if($_SESSION['HP'] > 0 and $_SESSION['HPINI'] > 0){
   $HU = selecionarHabilidade($id);
   $PI = selecionarPadrao($_SESSION['Inimigo']);
-  atividadeTurnoJogador($HU, "Jogador"); 
+  atividadeTurnoJogador($HU, "Jogador", $_SESSION['Bio']); 
   padraoAtaqueAP($PI);
       if($_SESSION['HPINI'] <= 0){
         header("location:TJN33.php");
       } elseif ($_SESSION['HP'] <= 0){
-        echo '
-        <script>
-        alert("Você sucumbiu aos ataques rapidos e precisos do Atlas Pintado!");
-        window.location.href = "TM.php";
-             </script>';
+        die(telaMorteQT());
       }
   } 
 $INFO = selecionarHabilidade($id);
-manterStatusAP();
-manterStatusPersonagem();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -74,3 +68,7 @@ manterStatusPersonagem();
 
 </body>
 </html>
+<?php
+manterStatusAP();
+manterStatusPersonagem();
+?>
